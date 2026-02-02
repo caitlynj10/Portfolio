@@ -1,15 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Resume from "./pages/Resume.jsx";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-function App() {
+
+export default function App() {
   
   return (
     <>
-     Welcome to my Portfolio!
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route path="/resume" element={<Resume />} />
+      </Routes>
+    </Router>
+    
     </>
   )
 }
 
-export default App
+
+ function NavBar(){
+    return(
+      <nav>
+        <div className="container-fluid">
+        <Link to="/resume">Resume</Link>
+        </div>
+  </nav>
+    )
+  }
+
