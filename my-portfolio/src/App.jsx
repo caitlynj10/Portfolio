@@ -47,7 +47,7 @@ export default function App() {
         <h1 className="page-header-text">About Me</h1>
         <div className="row">
           <div className="col">
-          <img className = "profile-picture" src="/images/ProfPic.png"/> 
+          <img className = "profile-picture" src="/images/ProfPic.jpg"/> 
           </div>
        
           <div className="col">

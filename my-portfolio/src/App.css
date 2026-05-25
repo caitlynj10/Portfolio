@@ -53,8 +53,8 @@
   font-size: 18px;
 }
 .profile-picture{
-  width: 50%;
-  height: 50%;
+  width: 45%;
+  height: 45%;
   margin-left: 30px;
  
 }
@@ -74,3 +74,50 @@ body{
   padding: 0;
 }
 
+.resume-card{
+  display: flex;
+  flex-direction: column;
+  margin-right: 100px;
+  margin-left: 100px;
+
+}
+
+.resume-text-header{
+  font-family: Times New Roman, serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0px;
+}
+
+.resume-text{
+  font-family: Times New Roman, serif;
+  font-size: 18px;
+  margin: 0px;
+}
+
+.resume-col{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: -20px;
+}
+
+.resume-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #000000; 
+  margin: 0px;
+}
+
+ul{
+  margin: 0px;
+}
