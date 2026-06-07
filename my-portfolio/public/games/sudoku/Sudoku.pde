@@ -12,6 +12,8 @@ boolean gameWon = false;
 String difficulty = "";
 int errors = 0;
 int completionTimer = -1;
+PFont garamond;
+
 
 
 
@@ -33,13 +35,13 @@ void draw() {
     startGame();
   }
   else{
-    background(255);
+    background(255, 229, 240);
 
     textSize(20);
     fill(0);
     text("Back", 30, 20);
     if(mouseX > 0 && mouseX < 60 && mouseY > 0 && mouseY < 30){
-      fill(255, 59, 108);
+      fill(255, 0, 0);
       text("Back", 30, 20);
     }
 
@@ -104,14 +106,17 @@ void draw() {
 
 void startGame(){
 
-  background(255);
+  background(255, 229, 240);
   stroke(0);
-  strokeWeight(1);
+  strokeWeight(2);
 
+  garamond = createFont("Garamond", 128);
+  textFont(garamond);
   textAlign(CENTER, TOP);
   textSize(40);
   text("Play Sudoku", width/2, 50);
-  fill(255, 158, 231);
+
+  fill(255, 176, 214);
   rect(170, 240, 200, 100, 28);
   fill(0);
   textAlign(CENTER, CENTER);
@@ -119,7 +124,7 @@ void startGame(){
   text("Start Game", 270, 290);
 
   if(mouseX > 170 && mouseX < 370 && mouseY > 240 && mouseY < 340){
-      fill(255, 0, 192);
+      fill(255, 87, 162);
       rect(170, 240, 200, 100, 28);
       fill(0);
       textAlign(CENTER, CENTER);
@@ -128,10 +133,10 @@ void startGame(){
   }
 
   if(difficulty.equals("Easy")){
-    fill(255, 0, 192);
+    fill(255, 87, 162);
   }
   else{
-    fill(255, 158, 231);
+    fill(255, 176, 214);
   }
   rect(70, 400, 100, 50, 28);
   fill(0);
@@ -140,10 +145,10 @@ void startGame(){
   text("Easy", 120, 425);
 
   if(difficulty.equals("Medium")){
-    fill(255, 0, 192);
+    fill(255, 87, 162);
   }
   else{
-    fill(255, 158, 231);
+    fill(255, 176, 214);
   }
   rect(220, 400, 100, 50, 28);
   fill(0);
@@ -152,10 +157,10 @@ void startGame(){
   text("Medium", 270, 425);
 
   if(difficulty.equals("Hard")){
-    fill(255, 0, 192);
+    fill(255, 87, 162);
   }
   else{
-    fill(255, 158, 231);
+    fill(255, 176, 214);
   }
   rect(370, 400, 100, 50, 28);
   fill(0);
@@ -253,9 +258,9 @@ void displayNumbers(){
     float x = (i - 1) * itemWidth + itemWidth / 2;
     boolean isHovering = mouseX > (i - 1) * itemWidth && mouseX < i * itemWidth && mouseY > 620 && mouseY < 670;
     if(mousePressed && isHovering){
-      fill(200,200,255);
+      fill(255, 227, 200);
       noStroke();
-      rect((i - 1) * itemWidth + 5, displayY, itemWidth - 10, 50);
+      rect((i - 1) * itemWidth + 5, displayY, itemWidth - 10, 50,12);
     }
     
     fill(0); 
@@ -263,7 +268,7 @@ void displayNumbers(){
     noFill();
     stroke(0);
     strokeWeight(2);
-    rect((i - 1) * itemWidth + 5, displayY, itemWidth - 10, 50);
+    rect((i - 1) * itemWidth + 5, displayY, itemWidth - 10, 50,12);
   }
   colorNumbers();
   
@@ -276,8 +281,9 @@ void colorNumbers(){
   if(engine.allNums(engine.countOnes(displayBoard, fullBoard))){
      
       fill(186, 186, 186);
-      noStroke();
-      rect((1 - 1) * itemWidth + 5, displayY, itemWidth - 10, 50);
+      stroke(0);
+      strokeWeight(2);
+      rect((1 - 1) * itemWidth + 5, displayY, itemWidth - 10, 50,12);
       fill(0);
       text(1, (1 - 1) * itemWidth + itemWidth / 2, displayY + 25);
       
@@ -286,64 +292,72 @@ void colorNumbers(){
 
     if(engine.allNums(engine.countTwos(displayBoard, fullBoard))){
       fill(186, 186, 186);
-      noStroke();
-      rect((2 - 1) * itemWidth + 5, displayY, itemWidth - 10, 50);
+      stroke(0);
+      strokeWeight(2);
+      rect((2 - 1) * itemWidth + 5, displayY, itemWidth - 10, 50,12);
       fill(0);
       text(2, (2 - 1) * itemWidth + itemWidth / 2, displayY + 25);
     }
 
     if(engine.allNums(engine.countThrees(displayBoard, fullBoard))){
       fill(186, 186, 186);
-      noStroke();
-      rect((3 - 1) * itemWidth + 5, displayY , itemWidth - 10, 50);
+      stroke(0);
+      strokeWeight(2);
+      rect((3 - 1) * itemWidth + 5, displayY , itemWidth - 10, 50,12);
       fill(0);
       text(3, (3 - 1) * itemWidth + itemWidth / 2, displayY + 25);
     }
 
     if(engine.allNums(engine.countFours(displayBoard, fullBoard))){
       fill(186, 186, 186);
-      noStroke();
-      rect((4 - 1) * itemWidth + 5, displayY, itemWidth - 10, 50);
+      stroke(0);
+      strokeWeight(2);
+      rect((4 - 1) * itemWidth + 5, displayY, itemWidth - 10, 50,12);
       fill(0);
       text(4, (4 - 1) * itemWidth + itemWidth / 2, displayY + 25);
     }
 
     if(engine.allNums(engine.countFives(displayBoard, fullBoard))){
       fill(186, 186, 186);
-      noStroke();
-      rect((5 - 1) * itemWidth + 5, displayY, itemWidth - 10, 50);
+      stroke(0);
+      strokeWeight(2);
+      rect((5 - 1) * itemWidth + 5, displayY, itemWidth - 10, 50,12);
       fill(0);
       text(5, (5 - 1) * itemWidth + itemWidth / 2, displayY + 25);
     }
 
     if(engine.allNums(engine.countSixes(displayBoard, fullBoard))){
       fill(186, 186, 186);
-      noStroke();
-      rect((6 - 1) * itemWidth + 5, displayY , itemWidth - 10, 50);
+      stroke(0);
+      strokeWeight(2);
+      rect((6 - 1) * itemWidth + 5, displayY , itemWidth - 10, 50,12);
       fill(0);
       text(6, (6 - 1) * itemWidth + itemWidth / 2, displayY + 25);
     }
 
     if(engine.allNums(engine.countSevens(displayBoard, fullBoard))){
       fill(186, 186, 186);
-      noStroke();
-      rect((7 - 1) * itemWidth + 5, displayY, itemWidth - 10, 50);
+      stroke(0);
+      strokeWeight(2);
+      rect((7 - 1) * itemWidth + 5, displayY, itemWidth - 10, 50,12);
       fill(0);
       text(7, (7 - 1) * itemWidth + itemWidth / 2, displayY + 25);
     }
 
     if(engine.allNums(engine.countEights(displayBoard, fullBoard))){
       fill(186, 186, 186);
-      noStroke();
-      rect((8 - 1) * itemWidth + 5, displayY, itemWidth - 10, 50);
+      stroke(0);
+      strokeWeight(2);
+      rect((8 - 1) * itemWidth + 5, displayY, itemWidth - 10, 50,12);
       fill(0);
       text(8, (8 - 1) * itemWidth + itemWidth / 2, displayY + 25);
     }
 
     if(engine.allNums(engine.countNines(displayBoard, fullBoard))){
       fill(186, 186, 186);
-      noStroke();
-      rect((9 - 1) * itemWidth + 5, displayY, itemWidth - 10, 50);
+      stroke(0);
+      strokeWeight(2);
+      rect((9 - 1) * itemWidth + 5, displayY, itemWidth - 10, 50,12);
       fill(0);
       text(9, (9 - 1) * itemWidth + itemWidth / 2, displayY + 25);
     }
@@ -489,7 +503,7 @@ void highlightSelected() {
       fill(196, 196, 196);    
     }
     else{
-      fill(120, 255, 121);
+      fill(255, 31, 143);
 
     }
     
@@ -503,7 +517,7 @@ void highlightSelected() {
     for (int r = 0; r < 9; r++) {
       for (int c = 0; c < 9; c++) {
         if (displayBoard[r][c] == selectedNumber && displayBoard[r][c] == fullBoard[r][c]) {
-          fill(120, 255, 121);
+          fill(255, 31, 143);
           noStroke();
           rect(c * cellSize, r * cellSize + 50, cellSize, cellSize);
         }
