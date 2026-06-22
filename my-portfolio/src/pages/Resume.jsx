@@ -59,92 +59,7 @@ export default function Resume() {
                     </div>
                 </p>
 
-                <br />
-                <p className="resume-text-header">HONORS</p>
-                <hr />
-                <p className="resume-text">
-                    <p className="resume-text"><b>Michael S. Feldberg & Ruth Lazarus</b> Endowed Posse Academic Achievement Scholarship, 2023-2024</p>
-                    <p className="resume-text"><b>The Posse Foundation </b>Full-Tuition Leadership Scholarship, 2021-2026</p> 
-                </p>
-
-                <br />
-                <p className="resume-text-header">SKILLS</p>
-                <hr />
-                <p className="resume-text">
-                    <p className="resume-text"><b>Programming Languages:</b> Java, JavaScript, Python, HTML, CSS, R, Processing</p>
-                    <p className="resume-text"><b>Frameworks and Tools:</b> GitHub, React, Matplotlib, RStudio, Spyder</p>
-                    <p className="resume-text"><b>Productivity:</b> Microsoft Office Suite, Google Suite</p>
-                </p>
-
-                <br />
-                <p className="resume-text-header"> RELEVANT PROJECTS</p>
-                <hr />
-                <p className="resume-text" style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <p className="resume-text"><b>Krabby Patty Catcher</b></p>
-                    <p className="resume-text">October 2024-Present</p>
-                </p>
-                <p className="resume-text">
-                    <i> On-going Personal Project</i>
-                    <ul>
-                        <li>Designing and developing a 2D game in Processing featuring animated characters from SpongeBob SquarePants and interactive environments</li>
-                        <li>Applying coordinate geometry and mathematical transformations to create dynamic visual elements and motion</li>
-                    </ul>
-               </p>
-                <br />
-                <p className="resume-text" style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <p className="resume-text"><b>Smart Pantry</b></p>
-                    <p className="resume-text">Fall 2025</p>
-                </p>
-                <p className="resume-text">
-                    <i>Capstone Project for Software Engineering</i>
-                    <ul>
-                        <li>Collaborated with a team of four to design and build an interactive web application, <b><i>Smart Pantry</i></b>, for managing pantry inventory and reducing food waste</li>
-                        <li>Led frontend development efforts, implementing user-friendly interfaces and responsive design using React, JavaScript, and CSS</li>
-                   </ul>
-               </p>
-
-                <br />
-                <p className="resume-text" style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <p className="resume-text"><b>Final Grade Prediction Algorithm</b></p>
-                    <p className="resume-text">Fall 2025</p>
-                </p>
-                <p className="resume-text">
-                    <i>Mathematics for Machine Learning</i>
-                    <ul>
-                        <li>Built an end-to-end machine learning pipeline using XGBoost to predict students’ final exam scores from habit and lifestyle data</li>
-                        <li>Evaluated model performance using MSE, RMSE, and R2, and analyzed residuals to assess accuracy and reliability</li>
-                   </ul>
-               </p>
-              
-               <br />
-               <p className="resume-text" style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <p className="resume-text"><b>Oscars Best Picture Prediction Algorithm </b></p>
-                    <p className="resume-text">Spring 2025</p>
-                </p>
-                <p className="resume-text">
-                    <i>Statistical Modeling </i>
-                    <ul>
-                        <li>Used R Studio to derive a generalized linear model given a data set of all variables regarding the Best Picture category from the Oscars</li>
-                        <li>Evaluated the variables using a stepwise prediction algorithm to ultimately predict the 2025 Best Picture winner</li>
-                    </ul>
-               </p>
-             
-              <br />
-                <p className="resume-text" style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <p className="resume-text"><b>Online Receipe Book</b></p>
-                    <p className="resume-text">Spring 2024</p>
-                </p>
-                <p className="resume-text">
-                    <i>Fundamentals of Software Engineering</i>
-                    <ul>
-                        <li>Collaborated with a team of four to design and build an interactive web application for browsing and managing recipes using React, JavaScript, and CSS</li>
-                        <li>Implemented frontend components, styling, and navigation logic to create a smooth, responsive, and user-friendly experience</li>
-                    </ul>
-               </p>
-
-              
-
-                <br />
+                 <br />
                 <p className="resume-text-header">EXPERIENCE</p>
                 <hr />
                    <p className="resume-text" style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -214,7 +129,92 @@ export default function Resume() {
                     </ul>
                 </p>
 
+                
 
+                <br />
+                <p className="resume-text-header"> RELEVANT PROJECTS</p>
+                <hr />
+                <p className="resume-text" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <p className="resume-text"><b>Krabby Patty Catcher</b></p>
+                    <p className="resume-text">October 2024-Present</p>
+                </p>
+                <p className="resume-text">
+                    <i> On-going Personal Project</i>
+                    <ul>
+                        <li>Designing and developing a 2D game in Processing featuring animated characters from SpongeBob SquarePants and interactive environments</li>
+                        <li>Applying coordinate geometry and mathematical transformations to create dynamic visual elements and motion</li>
+                    </ul>
+               </p>
+                <br />
+                <p className="resume-text" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <p className="resume-text"><b>Smart Pantry</b></p>
+                    <p className="resume-text">Fall 2025</p>
+                </p>
+                <p className="resume-text">
+                    <i>Capstone Project for Software Engineering</i>
+                    <ul>
+                        <li>Collaborated with a team of four to design and build an interactive web application, <b><i>Smart Pantry</i></b>, for managing pantry inventory and reducing food waste</li>
+                        <li>Led frontend development efforts, implementing user-friendly interfaces and responsive design using React, JavaScript, and CSS</li>
+                   </ul>
+               </p>
+
+                <br />
+                <p className="resume-text" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <p className="resume-text"><b>Final Grade Prediction Algorithm</b></p>
+                    <p className="resume-text">Fall 2025</p>
+                </p>
+                <p className="resume-text">
+                    <i>Mathematics for Machine Learning</i>
+                    <ul>
+                        <li>Built an end-to-end machine learning pipeline using XGBoost to predict students’ final exam scores from habit and lifestyle data</li>
+                        <li>Evaluated model performance using MSE, RMSE, and R2, and analyzed residuals to assess accuracy and reliability</li>
+                   </ul>
+               </p>
+              
+               <br />
+               <p className="resume-text" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <p className="resume-text"><b>Oscars Best Picture Prediction Algorithm </b></p>
+                    <p className="resume-text">Spring 2025</p>
+                </p>
+                <p className="resume-text">
+                    <i>Statistical Modeling </i>
+                    <ul>
+                        <li>Used R Studio to derive a generalized linear model given a data set of all variables regarding the Best Picture category from the Oscars</li>
+                        <li>Evaluated the variables using a stepwise prediction algorithm to ultimately predict the 2025 Best Picture winner</li>
+                    </ul>
+               </p>
+             
+              <br />
+                <p className="resume-text" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <p className="resume-text"><b>Online Receipe Book</b></p>
+                    <p className="resume-text">Spring 2024</p>
+                </p>
+                <p className="resume-text">
+                    <i>Fundamentals of Software Engineering</i>
+                    <ul>
+                        <li>Collaborated with a team of four to design and build an interactive web application for browsing and managing recipes using React, JavaScript, and CSS</li>
+                        <li>Implemented frontend components, styling, and navigation logic to create a smooth, responsive, and user-friendly experience</li>
+                    </ul>
+               </p>
+
+                    <br />
+                <p className="resume-text-header">HONORS</p>
+                <hr />
+                <p className="resume-text">
+                    <p className="resume-text"><b>Michael S. Feldberg & Ruth Lazarus</b> Endowed Posse Academic Achievement Scholarship, 2023-2024</p>
+                    <p className="resume-text"><b>The Posse Foundation </b>Full-Tuition Leadership Scholarship, 2021-2026</p> 
+                </p>
+
+                <br />
+                <p className="resume-text-header">SKILLS</p>
+                <hr />
+                <p className="resume-text">
+                    <p className="resume-text"><b>Programming Languages:</b> Java, JavaScript, Python, HTML, CSS, R, Processing</p>
+                    <p className="resume-text"><b>Frameworks and Tools:</b> GitHub, React, Matplotlib, RStudio, Spyder</p>
+                    <p className="resume-text"><b>Productivity:</b> Microsoft Office Suite, Google Suite</p>
+                </p>
+
+                <br/>
             </div>
         
         </div>
