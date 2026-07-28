@@ -4,15 +4,31 @@ import SpongeBobGame from './pages/SpongeBobGame.jsx';
 import AiHorrorStory from './pages/AiHorrorStory.jsx';
 import Contact from './pages/Contact.jsx';
 import Sudoku from './pages/Sudoku.jsx';
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { useNavigate, BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import Layout from "./components/Layout/Layout";
 
 
 export default function App() {
+  const navigate = useNavigate();
   
   return (
     <>
-    <Router>
+    
+   
+      <Layout 
+        onButtonPress={(button)=>{
+          
+          if(button === "ENTER_SITE"){
+            navigate("/contact");
+          }
+
+          if(button === "LEARN_MORE"){
+            navigate("/ai-horror-story");
+          }
+        }}
+    
+    />
       <Routes>
         <Route path="/" element={<HomePage/>}/>
         <Route path="/resume" element={<Resume />} />
@@ -21,62 +37,17 @@ export default function App() {
         <Route path="/ai-horror-story" element={<AiHorrorStory />} />
         <Route path="/contact" element={<Contact />} />       
       </Routes>
-    </Router>
+  
     
     </>
   )
 }
 
 function HomePage(){
-  const ogWidth = 1500;
-  const ogHeight = 800;
-
-  const [scale, setScale] = useState(1);
-
-  useEffect(() => {
-    function updateScale() {
-      const scaleX = window.innerWidth / ogWidth;
-      const scaleY = window.innerHeight / ogHeight;
-
-      setScale(Math.min(scaleX, scaleY));
-    }
-
-    updateScale();
-    window.addEventListener("resize", updateScale);
-
-    return () => window.removeEventListener("resize", updateScale);
-  }, []);
   return(
-    
-    
-    <div 
-     style={{
-        width: "100vw",
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        overflow: "hidden",
-
-     }}
-    >                  
+    <div>
       
-                <iframe
-                  src="/games/game_layout/index.html"
-                  title="Layout"
-                  width={ogWidth}
-                  height={ogHeight}
-                  scrolling="no"
-                  style={{
-                    border: "none",
-                    transform: `scale(${scale})`,
-                    transformOrigin: "center center",
-                    imageRendering: 'pixelated',
-                  }}
-                  
-                ></iframe>
-          
-        </div>
+    </div>
     
   )
 }
