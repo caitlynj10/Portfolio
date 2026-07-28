@@ -66,38 +66,38 @@ void setup(){
 
     noFill();
     strokeWeight(2);
-    circle(92.5,562.5, 100);
+    ellipse(92.5,562.5,100,100);
 
     fill(0,0,0);
     noStroke();
-    circle(1405,200,30);
-    circle(1405,250,30);
-    circle(1430,225,30);
-    circle(1380,225,30);
+    ellipse(1405,200,30,30);
+    ellipse(1405,250,30,30);
+    ellipse(1430,225,30,30);
+    ellipse(1380,225,30,30);
 
     noFill();
     stroke(0,0,0);
-    circle(1405,225,100);
+    ellipse(1405,225,100,100);
 
     
     
     noFill();
-    circle(1405,550,120);
+    ellipse(1405,550,120,120);
     fill(23, 23, 23);
-    circle(1405,550,100);
+    ellipse(1405,550,100,100);
     fill(0,0,0);
-    circle(1405,550,80);
+    ellipse(1405,550,80,80);
 
     noFill();
-    circle(92.5,200,120);
+    ellipse(92.5,200,120,120);
     fill(23, 23, 23);
-    circle(92.5,200,100);
+    ellipse(92.5,200,100,100);
     fill(0,0,0);
-    circle(92.5,200,80);
+    ellipse(92.5,200,80,80);
 
     noStroke();
     fill(23, 23, 23);
-    circle(50,750,20);
+    ellipse(50,750,20,20);
 
     stroke(0,0,0);
     line(1400,50,1450,50);

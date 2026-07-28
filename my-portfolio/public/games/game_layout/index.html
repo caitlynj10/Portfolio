@@ -7,9 +7,18 @@
     <title>Layout</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.6/processing.min.js"></script>
     <style>
-        body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; background-color: #ffffff; height: 100vh; width: 100vw; overflow: hidden; }
-        canvas { outline: none; border: 1px solid #ccc; }
-    </style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: white;
+    }
+    canvas {
+        display: block;
+        border: none;
+    }
+</style>
 </head>
 <body>
     <canvas id="game_layout" data-processing-sources="HomePage.pde"></canvas>
