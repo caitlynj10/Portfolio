@@ -8,17 +8,19 @@ import { useNavigate, BrowserRouter as Router, Routes, Route, Link } from "react
 import { useState, useEffect } from "react";
 import Layout from "./components/Layout/Layout";
 import Home from "./components/Home/Home";
+import About from "./components/About/About";
 
 export default function App() {
   const navigate = useNavigate();
   
   return (
     <>
-    
-      <Layout>
-
       
-      {/* <Layout 
+      
+    
+      <Routes>
+        <Route path="/" element={<Home 
+        
         onButtonPress={(button)=>{
           
           if(button === "ENTER_SITE"){
@@ -26,32 +28,20 @@ export default function App() {
           }
 
           if(button === "LEARN_MORE"){
-            navigate("/ai-horror-story");
+            navigate("/about");
           }
         }}
-    
-    /> */}
-    <Home />
-      <Routes>
-        <Route path="/" element={<HomePage/>}/>
+        />}/>
         <Route path="/resume" element={<Resume />} />
         <Route path="/spongebob-game" element={<SpongeBobGame />} />
         <Route path="/sudoku" element={<Sudoku />} />
         <Route path="/ai-horror-story" element={<AiHorrorStory />} />
-        <Route path="/contact" element={<Contact />} />       
+        <Route path="/contact" element={<Contact />} />  
+        <Route path="/about" element={<About />} />     
       </Routes>
-    </Layout>
+   
     
     </>
-  )
-}
-
-function HomePage(){
-  return(
-    <div>
-      
-    </div>
-    
   )
 }
 

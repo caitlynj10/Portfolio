@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 import p5 from "p5";
-import sketch from "./homeSketch";
+import sketch from "./aboutSketch";
 
-export default function Home({onButtonPress}) {
+export default function About({onButtonPress}) {
   const container = useRef();
 
   useEffect(() => {

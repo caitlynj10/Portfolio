@@ -24,10 +24,10 @@ export default function sketch(onButtonPress){
 
         drawBackground();
         drawScreen();
-        //drawGrid();
+        drawGrid();
         drawText();
         drawControls();
-        //drawArrows();
+        drawArrows();
 
         p.pop();
     };
@@ -46,8 +46,8 @@ export default function sketch(onButtonPress){
 
     function drawScreen(){
         //Inner Screen
-        //p.fill(250, 125, 182);
-        p.noFill();
+        p.fill(250, 125, 182);
+        //p.noFill();
         p.stroke(74, 13, 52);
         p.strokeWeight(4);
         p.rect(200,100,1100,600, 50);
@@ -82,17 +82,17 @@ export default function sketch(onButtonPress){
         p.noStroke();
         
         p.textAlign(p.CENTER, p.CENTER);
-        // p.textFont(pressStart);
-        // p.fill(0,0,0);
-        // p.textSize(60);
-        // p.text("Caitlyn Jones", 750, 300);
+        p.textFont(pressStart);
+        p.fill(0,0,0);
+        p.textSize(60);
+        p.text("Caitlyn Jones", 750, 300);
         
         
-        // p.textFont(pressStart);
-        // p.fill(0,0,0);
-        // p.textSize(30);
-        // p.text("ENTER SITE", 750, 475);
-        // p.text("LEARN MORE", 750, 550);
+        p.textFont(pressStart);
+        p.fill(0,0,0);
+        p.textSize(30);
+        p.text("ENTER SITE", 750, 475);
+        p.text("LEARN MORE", 750, 550);
 
         p.textFont(pressStart);
         p.fill(0,0,0);

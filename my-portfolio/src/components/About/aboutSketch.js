@@ -23,11 +23,14 @@ export default function sketch(onButtonPress){
         p.scale(scaleFactor);
 
         drawBackground();
-        drawScreen();
-        drawGrid();
-        drawText();
         drawControls();
-        drawArrows();
+        drawScreen();
+        drawProfText();
+        drawProfPicture();
+        drawProfBio();
+        drawMenu();
+        
+       
 
         p.pop();
     };
@@ -80,50 +83,62 @@ export default function sketch(onButtonPress){
         p.fill(250, 125, 182);
         p.stroke(74, 13, 52);
         p.strokeWeight(4);
-        p.rect(200,100,1100,600, 50);
+        p.rect(200,100,1100,600,50);
+        p.fill(255, 255, 255);
+        p.noStroke();
+        p.rect(210,110,1080,580,50);
 
     }
 
-    function drawGrid(){
-        //Grid Lines
-        p.strokeWeight(1);
-        p.stroke(229, 170, 192);
-        p.line(300,102,300,698);
-        p.line(400,102,400,698);
-        p.line(500,102,500,698);
-        p.line(600,102,600,698);
-        p.line(700,102,700,698);
-        p.line(800,102,800,698);
-        p.line(900,102,900,698);
-        p.line(1000,102,1000,698);
-        p.line(1100,102,1100,698);
-        p.line(1200,102,1200,698);
-    
-        p.line(202,200,1298,200);
-        p.line(202,300,1298,300);
-        p.line(202,400,1298,400);
-        p.line(202,500,1298,500);
-        p.line(202,600,1298,600);
 
-    }
-
-    function drawText(){
+    function drawProfText(){
 
         p.noStroke();
-        
+
         p.textAlign(p.CENTER, p.CENTER);
         p.textFont(pressStart);
         p.fill(0,0,0);
-        p.textSize(60);
-        p.text("Caitlyn Jones", 750, 300);
+        p.textSize(40);
+        p.text("ABOUT ME", 750, 60);
         
-        
+        p.textAlign(p.LEFT, p.CENTER);
         p.textFont(pressStart);
-        p.fill(0,0,0);
-        p.textSize(30);
-        p.text("ENTER SITE", 750, 475);
-        p.text("LEARN MORE", 750, 550);
+        p.textSize(16);
+        p.fill(250, 125, 182);
+        p.text("NAME:", 640, 140);
+        p.textAlign(p.LEFT, p.CENTER);
+        p.fill(0);
+        p.text("Caitlyn Jones", 750, 140);
 
+        p.fill(250, 125, 182);
+        p.text("DEGREE:", 640, 180);    
+        p.fill(0);
+        p.text("BS in CS and Applied Math", 775, 180);
+
+        p.fill(250, 125, 182);
+        p.text("BASED IN:", 640, 220);
+        p.fill(0);
+        p.text("??????", 800, 220);
+
+        p.textAlign(p.LEFT, p.CENTER);
+        p.fill(250, 125, 182);
+        p.text("AGE:", 640, 260);
+        p.fill(0);
+        p.text("22", 725, 260);
+
+        p.textAlign(p.LEFT, p.CENTER);
+        p.fill(250, 125, 182);
+        p.text("SIGN:", 640, 300);
+        p.fill(0);
+        p.text("Libra", 740, 300);
+
+        p.textAlign(p.LEFT, p.CENTER);
+        p.fill(250, 125, 182);
+        p.text("DREAM JOB:", 640, 340);
+        p.fill(0);
+        p.text("Web and Game Developer", 825, 340);
+
+        p.textAlign(p.CENTER, p.CENTER);
         p.textFont(pressStart);
         p.fill(0,0,0);
         p.textSize(10);
@@ -131,6 +146,44 @@ export default function sketch(onButtonPress){
 
     }
 
+    function drawProfPicture(){
+        p.fill(163, 163, 163);
+        p.stroke(0,0,0);
+        p.rect(210,110,400,580,50);
+    }
+
+    function drawProfBio(){
+        //Bio
+        p.stroke(0);
+        p.strokeWeight(3);
+        p.line(630,370,1270,370);
+        p.strokeWeight(0);
+        p.textAlign(p.LEFT, p.CENTER);
+        p.textFont(pressStart);
+        p.textSize(12);
+        p.fill(0,0,0);
+        p.text("Welcome to my portfolio!",640,400);
+        p.text("I created this to showcase", 640, 425);
+        p.text("my two passions: web and", 640,450);
+        p.text("game design. Learn about", 640, 475);
+        p.text("what makes me ME through", 640, 500);
+        p.text("this experience. Play a", 640, 525);
+        p.text("few games, explore past", 640, 550);
+        p.text("projects, and learn about", 640, 575);
+        p.text("my experiences and skills", 640, 600);
+        p.text("as you enter the gamified", 640, 625);
+        p.text("world of Caitlyn Jones.", 640, 650);
+    }
+
+    function drawMenu(){
+        p.textAlign(p.LEFT,p.CENTER);
+        p.fill(130, 17, 66); 
+        p.textSize(20);
+        p.text("EXPLORE SITE", 1025, 450);
+        p.text("PLAY GAMES", 1025, 500);
+        p.text("CONTACT ME", 1025, 550);
+
+    }
     function drawArrows(){
         p.stroke(207, 27, 189);
         if(selectedOption === 0){
