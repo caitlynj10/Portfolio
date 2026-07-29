@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import p5 from "p5";
 import sketch from "./layoutSketch";
 
-export default function Layout({onButtonPress}) {
+export default function Home({onButtonPress}) {
   const container = useRef();
 
   useEffect(() => {

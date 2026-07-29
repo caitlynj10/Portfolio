@@ -7,7 +7,7 @@ import Sudoku from './pages/Sudoku.jsx';
 import { useNavigate, BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Layout from "./components/Layout/Layout";
-
+import Home from "./components/Home/Home";
 
 export default function App() {
   const navigate = useNavigate();
@@ -15,8 +15,10 @@ export default function App() {
   return (
     <>
     
-   
-      <Layout 
+      <Layout>
+
+      
+      {/* <Layout 
         onButtonPress={(button)=>{
           
           if(button === "ENTER_SITE"){
@@ -28,7 +30,8 @@ export default function App() {
           }
         }}
     
-    />
+    /> */}
+    <Home />
       <Routes>
         <Route path="/" element={<HomePage/>}/>
         <Route path="/resume" element={<Resume />} />
@@ -37,7 +40,7 @@ export default function App() {
         <Route path="/ai-horror-story" element={<AiHorrorStory />} />
         <Route path="/contact" element={<Contact />} />       
       </Routes>
-  
+    </Layout>
     
     </>
   )

@@ -22,11 +22,11 @@ export default function sketch(onButtonPress){
 
         p.scale(scaleFactor);
 
-        drawBackground();
+        //drawBackground();
         drawScreen();
         drawGrid();
         drawText();
-        drawControls();
+        //drawControls();
         drawArrows();
 
         p.pop();
@@ -77,7 +77,8 @@ export default function sketch(onButtonPress){
 
     function drawScreen(){
         //Inner Screen
-        p.fill(250, 125, 182);
+        //p.fill(250, 125, 182);
+        p.noFill();
         p.stroke(74, 13, 52);
         p.strokeWeight(4);
         p.rect(200,100,1100,600, 50);
@@ -124,10 +125,10 @@ export default function sketch(onButtonPress){
         p.text("ENTER SITE", 750, 475);
         p.text("LEARN MORE", 750, 550);
 
-        p.textFont(pressStart);
-        p.fill(0,0,0);
-        p.textSize(10);
-        p.text("Power",90,750);
+        // p.textFont(pressStart);
+        // p.fill(0,0,0);
+        // p.textSize(10);
+        // p.text("Power",90,750);
 
     }
 
