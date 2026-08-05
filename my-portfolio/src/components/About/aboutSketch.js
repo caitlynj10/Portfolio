@@ -2,11 +2,23 @@ export default function sketch(onButtonPress){
     return function(p){
     let pressStart;
     let selectedOption = 0;
+    let gitIM;
+    let linkedIM;
+    let emailIM;
+    let qmIM;
+    let profPic;
+    let contactOpen = false;
     //0 = enter site; 1 = learn more
 
     p.setup = async () =>{
         p.createCanvas(window.innerWidth, window.innerHeight);
         pressStart  = await p.loadFont('/fonts/PressStart2P.ttf');
+        pressStart  = await p.loadFont('/fonts/PressStart2P.ttf');
+        gitIM = await p.loadImage("/icons/Github.png");
+        linkedIM = await p.loadImage("/icons/Linkedin.png");
+        emailIM = await p.loadImage("/icons/Email.png");
+        qmIM = await p.loadImage("/icons/QM.png");
+        profPic = await p.loadImage("/icons/ProfPic.jpg");
     };
 
     p.draw = () => {
@@ -29,18 +41,17 @@ export default function sketch(onButtonPress){
         drawProfPicture();
         drawProfBio();
         drawMenu();
+        drawArrows();
+        if(contactOpen){
+            drawContactInfo();
+        }
         
        
 
         p.pop();
     };
 
-    // p.mousePressed = () =>{
-    //     if(p.dist(p.mouseX, p.mouseY, 1405, 200) < 30){
-    //         onButtonPress("A");
-    //     }
 
-    // };
 
     p.keyPressed = () => {
         console.log('key pressed', p.key);
@@ -55,12 +66,12 @@ export default function sketch(onButtonPress){
         if (p.keyCode === 13) {
 
             if(selectedOption === 0){
-                onButtonPress("ENTER_SITE");
+                onButtonPress("SPONGEBOB_GAME");
             }
 
 
             if(selectedOption === 1){
-                onButtonPress("LEARN_MORE");
+                onButtonPress("SUDOKU");
             }
 
         }
@@ -83,7 +94,7 @@ export default function sketch(onButtonPress){
         p.fill(250, 125, 182);
         p.stroke(74, 13, 52);
         p.strokeWeight(4);
-        p.rect(200,100,1100,600,50);
+        p.rect(150,50,1200,700,50);
         p.fill(255, 255, 255);
         p.noStroke();
         p.rect(210,110,1080,580,50);
@@ -99,7 +110,7 @@ export default function sketch(onButtonPress){
         p.textFont(pressStart);
         p.fill(0,0,0);
         p.textSize(40);
-        p.text("ABOUT ME", 750, 60);
+        p.text("ABOUT ME", 750, 85);
         
         p.textAlign(p.LEFT, p.CENTER);
         p.textFont(pressStart);
@@ -147,9 +158,7 @@ export default function sketch(onButtonPress){
     }
 
     function drawProfPicture(){
-        p.fill(163, 163, 163);
-        p.stroke(0,0,0);
-        p.rect(210,110,400,580,50);
+        p.image(profPic,230,130, 360, 540);
     }
 
     function drawProfBio(){
@@ -179,19 +188,26 @@ export default function sketch(onButtonPress){
         p.textAlign(p.LEFT,p.CENTER);
         p.fill(130, 17, 66); 
         p.textSize(20);
-        p.text("EXPLORE SITE", 1025, 450);
-        p.text("PLAY GAMES", 1025, 500);
-        p.text("CONTACT ME", 1025, 550);
+        p.text("EXPLORE SITE", 1000, 450);
+        p.text("PLAY GAMES", 1000, 500);
+        p.textSize(10);
+        p. text("KRABBY PATTY CATCHER", 1020, 530);
+        p.text("SUDOKU", 1020, 550);
 
     }
     function drawArrows(){
-        p.stroke(207, 27, 189);
+        p.fill(255, 69, 201);
+        p.stroke(0);
+        p.strokeWeight(1);
         if(selectedOption === 0){
-            p.triangle(560,465,580,475,560,485);
+            p.triangle(1005,525,1015,530,1005,535);
         }
         else{
-            p.triangle(560,540,580,550,560,560);
+            p.triangle(1005,545,1015,550,1005,555);
+
         }
+       
+        
         
     }
 
@@ -200,50 +216,103 @@ export default function sketch(onButtonPress){
         p.stroke(0,0,0);
 
         p.fill(0,0,0);
-        p.rect(80,525,25,75);
-        p.rect(55,550,75,25);
+        p.rect(60,525,25,75);
+        p.rect(35,550,75,25);
 
         p.noFill();
         p.strokeWeight(2);
-        p.ellipse(92.5,562.5,100,100);
+        p.circle(72.5,562.5, 100);
 
         p.fill(0,0,0);
         p.noStroke();
-        p.ellipse(1405,200,30,30);
-        p.ellipse(1405,250,30,30);
-        p.ellipse(1430,225,30,30);
-        p.ellipse(1380,225,30,30);
+        p.circle(1425,275,30);
+        p.circle(1425,325,30);
+        p.circle(1450,300,30);
+        p.circle(1400,300,30);
 
         p.noFill();
         p.stroke(0,0,0);
-        p.ellipse(1405,225,100,100);
+        p.circle(1425,300,100);
 
         
         
         p.noFill();
-        p.ellipse(1405,550,120,120);
+        p.circle(1425,550,90);
         p.fill(23, 23, 23);
-        p.ellipse(1405,550,100,100);
+        p.circle(1425,550,70);
         p.fill(0,0,0);
-        p.ellipse(1405,550,80,80);
+        p.circle(1425,550,50);
 
         p.noFill();
-        p.ellipse(92.5,200,120,120);
+        p.circle(77.5,200,90);
         p.fill(23, 23, 23);
-        p.ellipse(92.5,200,100,100);
+        p.circle(77.5,200,70);
         p.fill(0,0,0);
-        p.ellipse(92.5,200,80,80);
+        p.circle(77.5,200,50);
+
 
         p.noStroke();
-        p.fill(23, 23, 23);
-        p.ellipse(50,750,20,20);
+        p.fill(255,0,0);
+        p.circle(50,750,20);
 
         p.stroke(0,0,0);
         p.line(1400,50,1450,50);
         p.line(1400,60,1450,60);
         p.line(1400,70,1450,70);
 
+        p.noFill();
+        p.stroke(0,0,0);
+        p.ellipse(735,770,20,20);
+        p.ellipse(735,770,10,10);
+        p.ellipse(765,770,20,20);
+        p.fill(0);
+        p.ellipse(765,770,10,10);
+
+        p.image(qmIM, 1285,755,30,30);
     }
+
+    function drawContactInfo(){
+        p.stroke(0);
+        p.strokeWeight(4);
+        p.fill(255,255,255);
+        p.rect(1125,580,350,150, 30);
+        p.noStroke();
+        p.triangle(1270,720,1300,750,1330,720);
+        p.stroke(0);
+        p.line(1280,730,1300,750);
+        p.line(1300,750,1320,730);
+
+
+        p.image(gitIM, 1145, 590, 40,40);
+        p.image(linkedIM, 1145, 635, 40,40);
+        p.image(emailIM, 1145, 680, 40,40);
+
+        p.strokeWeight(0);
+        p.textAlign(p.LEFT,p.CENTER);
+        p.textFont(pressStart);
+        p.textSize(10);
+        p.fill(0,0,0);
+        p.text("@caitlynj10", 1195, 610);
+        p.text("/caitlyn-jones1022", 1195, 655);
+        p.text("caitlyn.jones1022@gmail.com", 1195, 700);
+
+    }
+    p.mousePressed = () => {
+        let scaleX = p.width / 1500;
+        let scaleY = p.height / 800;
+        let scaleFactor = Math.min(scaleX, scaleY);
+
+        let offsetX = (p.width - 1500 * scaleFactor) / 2;
+        let offsetY = (p.height - 800 * scaleFactor) / 2;
+
+        let mx = (p.mouseX - offsetX) / scaleFactor;
+        let my = (p.mouseY - offsetY) / scaleFactor;
+
+        if(mx > 1285 && mx < 1315 && my > 755 && my < 785){
+            contactOpen = !contactOpen;
+        }
+
+    };
 
     p.windowResized = () =>{
         p.resizeCanvas(window.innerWidth, window.innerHeight);

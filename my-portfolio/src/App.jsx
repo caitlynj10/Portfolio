@@ -6,7 +6,6 @@ import Contact from './pages/Contact.jsx';
 import Sudoku from './pages/Sudoku.jsx';
 import { useNavigate, BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Layout from "./components/Layout/Layout";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
 

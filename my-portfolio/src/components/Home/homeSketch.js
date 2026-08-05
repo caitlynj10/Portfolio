@@ -2,11 +2,21 @@ export default function sketch(onButtonPress){
     return function(p){
     let pressStart;
     let selectedOption = 0;
+    let gitIM;
+    let linkedIM;
+    let emailIM;
+    let qmIM;
+    let contactOpen = false;
     //0 = enter site; 1 = learn more
 
     p.setup = async () =>{
         p.createCanvas(window.innerWidth, window.innerHeight);
         pressStart  = await p.loadFont('/fonts/PressStart2P.ttf');
+        gitIM = await p.loadImage("/icons/Github.png");
+        linkedIM = await p.loadImage("/icons/Linkedin.png");
+        emailIM = await p.loadImage("/icons/Email.png");
+        qmIM = await p.loadImage("/icons/QM.png");
+
     };
 
     p.draw = () => {
@@ -28,6 +38,9 @@ export default function sketch(onButtonPress){
         drawText();
         drawControls();
         drawArrows();
+        if(contactOpen){
+            drawContactInfo();
+        }
 
         p.pop();
     };
@@ -80,7 +93,10 @@ export default function sketch(onButtonPress){
         p.fill(250, 125, 182);
         p.stroke(74, 13, 52);
         p.strokeWeight(4);
-        p.rect(200,100,1100,600, 50);
+        p.rect(150,50,1200,700,50);
+        p.noFill();
+        p.stroke(229, 170, 192);
+        p.rect(210,110,1080,580,50);
 
     }
 
@@ -88,22 +104,26 @@ export default function sketch(onButtonPress){
         //Grid Lines
         p.strokeWeight(1);
         p.stroke(229, 170, 192);
-        p.line(300,102,300,698);
-        p.line(400,102,400,698);
-        p.line(500,102,500,698);
-        p.line(600,102,600,698);
-        p.line(700,102,700,698);
-        p.line(800,102,800,698);
-        p.line(900,102,900,698);
-        p.line(1000,102,1000,698);
-        p.line(1100,102,1100,698);
-        p.line(1200,102,1200,698);
-    
-        p.line(202,200,1298,200);
-        p.line(202,300,1298,300);
-        p.line(202,400,1298,400);
-        p.line(202,500,1298,500);
-        p.line(202,600,1298,600);
+        p.line(200,52,200,748);
+        p.line(300,52,300,748);
+        p.line(400,52,400,748);
+        p.line(500,52,500,748);
+        p.line(600,52,600,748);
+        p.line(700,52,700,748);
+        p.line(800,52,800,748);
+        p.line(900,52,900,748);
+        p.line(1000,52,1000,748);
+        p.line(1100,52,1100,748);
+        p.line(1200,52,1200,748);
+        p.line(1300,52,1300,748);
+
+        p.line(152,100,1348,100);
+        p.line(152,200,1348,200);
+        p.line(152,300,1348,300);
+        p.line(152,400,1348,400);
+        p.line(152,500,1348,500);
+        p.line(152,600,1348,600);
+        p.line(152,700,1348,700);
 
     }
 
@@ -115,14 +135,14 @@ export default function sketch(onButtonPress){
         p.textFont(pressStart);
         p.fill(0,0,0);
         p.textSize(60);
-        p.text("Caitlyn Jones", 750, 300);
+        p.text("Caitlyn Jones", 750, 250);
         
         
         p.textFont(pressStart);
         p.fill(0,0,0);
         p.textSize(30);
-        p.text("ENTER SITE", 750, 475);
-        p.text("LEARN MORE", 750, 550);
+        p.text("ENTER SITE", 750, 425);
+        p.text("LEARN MORE", 750, 500);
 
         p.textFont(pressStart);
         p.fill(0,0,0);
@@ -134,10 +154,10 @@ export default function sketch(onButtonPress){
     function drawArrows(){
         p.stroke(207, 27, 189);
         if(selectedOption === 0){
-            p.triangle(560,465,580,475,560,485);
+            p.triangle(560,415,580,425,560,435);
         }
         else{
-            p.triangle(560,540,580,550,560,560);
+            p.triangle(560,490,580,500,560,510);
         }
         
     }
@@ -147,51 +167,104 @@ export default function sketch(onButtonPress){
         p.stroke(0,0,0);
 
         p.fill(0,0,0);
-        p.rect(80,525,25,75);
-        p.rect(55,550,75,25);
+        p.rect(60,525,25,75);
+        p.rect(35,550,75,25);
 
         p.noFill();
         p.strokeWeight(2);
-        p.ellipse(92.5,562.5,100,100);
+        p.circle(72.5,562.5, 100);
 
         p.fill(0,0,0);
         p.noStroke();
-        p.ellipse(1405,200,30,30);
-        p.ellipse(1405,250,30,30);
-        p.ellipse(1430,225,30,30);
-        p.ellipse(1380,225,30,30);
+        p.circle(1425,275,30);
+        p.circle(1425,325,30);
+        p.circle(1450,300,30);
+        p.circle(1400,300,30);
 
         p.noFill();
         p.stroke(0,0,0);
-        p.ellipse(1405,225,100,100);
+        p.circle(1425,300,100);
 
         
         
         p.noFill();
-        p.ellipse(1405,550,120,120);
+        p.circle(1425,550,90);
         p.fill(23, 23, 23);
-        p.ellipse(1405,550,100,100);
+        p.circle(1425,550,70);
         p.fill(0,0,0);
-        p.ellipse(1405,550,80,80);
+        p.circle(1425,550,50);
 
         p.noFill();
-        p.ellipse(92.5,200,120,120);
+        p.circle(77.5,200,90);
         p.fill(23, 23, 23);
-        p.ellipse(92.5,200,100,100);
+        p.circle(77.5,200,70);
         p.fill(0,0,0);
-        p.ellipse(92.5,200,80,80);
+        p.circle(77.5,200,50);
+
 
         p.noStroke();
         p.fill(23, 23, 23);
-        p.ellipse(50,750,20,20);
+        p.circle(50,750,20);
 
         p.stroke(0,0,0);
         p.line(1400,50,1450,50);
         p.line(1400,60,1450,60);
         p.line(1400,70,1450,70);
 
+        p.noFill();
+        p.stroke(0,0,0);
+        p.ellipse(735,770,20,20);
+        p.ellipse(735,770,10,10);
+        p.ellipse(765,770,20,20);
+        p.fill(0);
+        p.ellipse(765,770,10,10);
+
+        p.image(qmIM, 1285,755,30,30);
+
     }
 
+    function drawContactInfo(){
+        p.stroke(0);
+        p.strokeWeight(4);
+        p.fill(255,255,255);
+        p.rect(1125,580,350,150, 30);
+        p.noStroke();
+        p.triangle(1270,720,1300,750,1330,720);
+        p.stroke(0);
+        p.line(1280,730,1300,750);
+        p.line(1300,750,1320,730);
+
+
+        p.image(gitIM, 1145, 590, 40,40);
+        p.image(linkedIM, 1145, 635, 40,40);
+        p.image(emailIM, 1145, 680, 40,40);
+
+        p.strokeWeight(0);
+        p.textAlign(p.LEFT,p.CENTER);
+        p.textFont(pressStart);
+        p.textSize(10);
+        p.fill(0,0,0);
+        p.text("@caitlynj10", 1195, 610);
+        p.text("/caitlyn-jones1022", 1195, 655);
+        p.text("caitlyn.jones1022@gmail.com", 1195, 700);
+
+    }
+    p.mousePressed = () => {
+        let scaleX = p.width / 1500;
+        let scaleY = p.height / 800;
+        let scaleFactor = Math.min(scaleX, scaleY);
+
+        let offsetX = (p.width - 1500 * scaleFactor) / 2;
+        let offsetY = (p.height - 800 * scaleFactor) / 2;
+
+        let mx = (p.mouseX - offsetX) / scaleFactor;
+        let my = (p.mouseY - offsetY) / scaleFactor;
+
+        if(mx > 1285 && mx < 1315 && my > 755 && my < 785){
+            contactOpen = !contactOpen;
+        }
+
+    };
     p.windowResized = () =>{
         p.resizeCanvas(window.innerWidth, window.innerHeight);
 
