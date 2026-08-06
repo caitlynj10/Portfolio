@@ -12,7 +12,7 @@ class SudokuGame{
         for (let i = 0; i < 9; i++) {
             for (let j = 0; j < 9; j++) {
                 if (board[i][j] == 0) { 
-                    let nums = [];
+                    let nums = [1,2,3,4,5,6,7,8,9];
                     for (let k = nums.length - 1; k > 0; k--) {
                         let r = Math.floor(Math.random() * (k + 1));
                         [nums[k], nums[r]] = [nums[r], nums[k]];
@@ -36,10 +36,11 @@ class SudokuGame{
 
    printBoard(board){  
         for(let i = 0; i < board.length; i++){
+            let ROW = "";
             for(let j = 0; j < board[i].length; j++){
-                console.log(board[i][j] + " ");
+                ROW += board[i][j] + " ";
             }
-            console.log();   
+            console.log(ROW);   
         }
 
     }
@@ -263,11 +264,7 @@ class SudokuGame{
         }
         return true;
     }
-    
-    
-
-
-
+ 
 }
 export default function sketch(onButtonPress){
     return function(p){
@@ -293,18 +290,14 @@ export default function sketch(onButtonPress){
     let gameWon = false;
     let difficulty = "";
     let errors = 0;
-    let garamond;
     let startTime;
     let elapsedTime;
-    let seconds;
-    let gameTime;
-
-    //0 = enter site; 1 = learn more
+    let garamond;
 
     p.setup = async () =>{
         p.createCanvas(window.innerWidth, window.innerHeight);
         pressStart  = await p.loadFont('/fonts/PressStart2P.ttf');
-        pressStart  = await p.loadFont('/fonts/PressStart2P.ttf');
+        garamond = await p.loadFont('/fonts/Garamond.ttf');
         gitIM = await p.loadImage("/icons/Github.png");
         linkedIM = await p.loadImage("/icons/Linkedin.png");
         emailIM = await p.loadImage("/icons/Email.png");
@@ -342,33 +335,6 @@ export default function sketch(onButtonPress){
         p.pop();
     };
 
-
-
-    p.keyPressed = () => {
-        console.log('key pressed', p.key);
-        if(p.keyCode == 40){
-            selectedOption = 1;
-        }
-
-        if(p.keyCode === 38){
-            selectedOption = 0;
-        }
-
-        if (p.keyCode === 13) {
-
-            if(selectedOption === 0){
-                onButtonPress("SPONGEBOB_GAME");
-            }
-
-
-            if(selectedOption === 1){
-                onButtonPress("SUDOKU");
-            }
-
-        }
-
-
-    };
 
     p.windowResized = () =>{
         p.resizeCanvas(window.innerWidth, window.innerHeight);
@@ -489,6 +455,7 @@ export default function sketch(onButtonPress){
         p.text("caitlyn.jones1022@gmail.com", 1195, 700);
 
     }
+
     function setupSudoku() {
         // 9 cells * 60px
         engine = new SudokuGame();
@@ -499,17 +466,16 @@ export default function sketch(onButtonPress){
         
         engine.copyBoard(displayBoard, fullBoard);
         engine.easyBoard(displayBoard);
-        startTime = millis();
+        startTime = p.millis();
         elapsedTime = 0;
-        garamond = createFont("Garamond", 128);
+       
 
         
     }
 
     function drawSudoku() {
-        pushMatrix();
-        pushStyle();
-        translate(435,50);
+        p.push();
+        p.translate(435,50);
         
         if(!gameStarted){
             startGame();
@@ -520,72 +486,96 @@ export default function sketch(onButtonPress){
             gameWon = true;
             }
             
-            textAlign(CENTER,CENTER);
-            textFont(garamond);
+            p.textAlign(p.CENTER,p.CENTER);
+            p.textFont(garamond);
             //background(255, 229, 240);
-            let sx = mouseX - 435;
-            let sy = mouseY - 50;
-            textSize(20);
+            let sx = getScaledMouseX() - 435;
+            let sy = getScaledMouseY() - 50;
+            p.textSize(20);
 
-            noFill();
-            stroke(201, 149, 0);
-            rect(-200,300,100,50, 28);
-            textAlign(CENTER,CENTER);
-            textSize(20);
-            text("Hint", -150, 325);
+            p.noFill();
+            p.strokeWeight(3);
+            p.stroke(201, 149, 0);
+            p.rect(-200,300,100,50, 28);
+            p.textAlign(p.CENTER,p.CENTER);
+            p.textSize(20);
+            p.stroke(0);
+            p.fill(0);
+            p.strokeWeight(1);
+            p.text("Hint", -150, 325);
             if(sx > -200 && sx < -100 && sy > 300 && sy < 350){
-            fill(255, 218, 112);
-            rect(-200,300,100,50, 28);
-            fill(0);
-            text("Hint", -150, 325);
+                p.fill(255, 218, 112);
+                p.stroke(201, 149, 0);
+                p.strokeWeight(3);
+                p.rect(-200,300,100,50, 28);
+                p.fill(0);
+                p.strokeWeight(1);
+                p.stroke(0);
+                p.text("Hint", -150, 325);
             }
 
-            noFill();
-            stroke(255, 0, 0);
-            rect(-210,400,120,50, 28);
-            textAlign(CENTER,CENTER);
-            textSize(20);
-            text("End Game", -150, 425);
+            p.noFill();
+            p.stroke(255, 0, 0);
+            p.strokeWeight(3);
+            p.rect(-210,400,120,50, 28);
+            p.textAlign(p.CENTER,p.CENTER);
+            p.textSize(20);
+            p.stroke(0);
+            p.fill(0);
+            p.strokeWeight(1);
+            p.text("End Game", -150, 425);
             if(sx > -210 && sx < -90 && sy > 400 && sy < 450){
-            fill(255, 110, 110);
-            rect(-210,400,120,50, 28);
-            fill(0);
-            text("End Game", -150, 425);
+            p.fill(255, 110, 110);
+            p.stroke(255, 0, 0);
+            p.strokeWeight(3);
+            p.rect(-210,400,120,50, 28);
+            p.fill(0);
+            p.stroke(0);
+            p.strokeWeight(1);
+            p.text("End Game", -150, 425);
             }
 
 
 
-            textSize(40);
-            fill(0);
+            p.textSize(40);
+            p.fill(0);
             if(!gameWon){
-            elapsedTime = (millis() - startTime) / 1000;
+                elapsedTime = (p.millis() -startTime) / 1000;
             }
 
-            let minutes = elapsedTime / 60;
-            let seconds = elapsedTime % 60;
+            let minutes = Math.floor(elapsedTime / 60);
+            let seconds = Math.floor(elapsedTime % 60);
 
-            text("Time: " + nf(minutes, 2) + ":" + nf(seconds, 2), 750, 100);
+            p.strokeWeight(1);
+            p.text("Time: " + p.nf(minutes, 2) + ":" + p.nf(seconds, 2), 750, 100);
             
-            text("Errors: ", 720, 150);
-            fill(255, 0, 0);
-            text(errors, 800, 150);
+    
+            p.stroke(0);
+            p.text("Errors: ", 720, 150);
+            p.stroke(255,0,0);
+            
+            p.fill(255, 0, 0);
+            p.text(errors, 800, 150);
             
 
 
-
-            textAlign(CENTER,CENTER);
-            textSize(40);
-            if(difficulty.equals("Easy")){
-            fill(12,140,0);
-            text(difficulty, sWidth/2, 25);
+            p.strokeWeight(2);
+            p.textAlign(p.CENTER,p.CENTER);
+            p.textSize(40);
+            if(difficulty == "Easy"){
+                p.stroke(12,140,0);
+                p.fill(12,140,0);
+                p.text(difficulty, sWidth/2, 25);
             }
-            if(difficulty.equals("Medium")){
-            fill(224, 123, 0);
-            text(difficulty, sWidth/2, 25);
+            if(difficulty == "Medium"){
+                p.stroke(224, 123, 0);
+                p.fill(224, 123, 0);
+                p.text(difficulty, sWidth/2, 25);
             }
-            if(difficulty.equals("Hard")){
-            fill(255, 0, 0);
-            text(difficulty, sWidth/2, 25);
+            if(difficulty == "Hard"){
+                p.stroke(255, 0, 0);
+                p.fill(255, 0, 0);
+                p.text(difficulty, sWidth/2, 25);
             }
             
             
@@ -603,106 +593,124 @@ export default function sketch(onButtonPress){
 
         
 
-        popStyle();  
-        popMatrix();
+         
+        p.pop();
     
     }
     
     function startGame(){
-        let sx = mouseX - 435;
-        let sy = mouseY - 50;
+        let sx = getScaledMouseX() - 435;
+        let sy = getScaledMouseY() - 50;
 
         //background(255, 229, 240);
-        stroke(0);
-        strokeWeight(2);
+        p.stroke(0);
+        p.strokeWeight(2);
 
-        textFont(garamond);
-        textAlign(CENTER, TOP);
-        textSize(70);
-        text("Play Sudoku", sWidth/2, 40);
+        p.textFont(garamond);
+        p.textAlign(p.CENTER, p.TOP);
+        p.textSize(70);
+        p.fill(0);
+        p.text("Play Sudoku", sWidth/2, 40);
         
-        fill(255, 176, 214);
-        rect(sWidth/2 - 150, 220, 300, 100, 28);
-        fill(0);
-        textAlign(CENTER, CENTER);
-        textSize(40);
-        text("Start Game", sWidth/2, 270);
+        p.stroke(0);
+        p.strokeWeight(2);
+        p.fill(255, 176, 214);
+        p.rect(sWidth/2 - 150, 220, 300, 100, 28);
+        p.fill(0);
+        p.textAlign(p.CENTER, p.CENTER);
+        p.textSize(40);
+        p.strokeWeight(1);
+        p.text("Start Game", sWidth/2, 270);
 
         if(sx > sWidth/2 - 150 && sx < sWidth/2 + 150 && sy > 220 && sy < 320){
-            fill(255, 87, 162);
-            rect(sWidth/2 - 150, 220, 300, 100, 28);
-            fill(0);
-            textAlign(CENTER, CENTER);
-            textSize(40);
-            text("Start Game", sWidth/2, 270);
+            p.fill(255, 87, 162);
+            p.stroke(0);
+            p.strokeWeight(2);
+            p.rect(sWidth/2 - 150, 220, 300, 100, 28);
+            p.fill(0);
+            p.textAlign(p.CENTER, p.CENTER);
+            p.textSize(40);
+            p.strokeWeight(1);
+            p.text("Start Game", sWidth/2, 270);
         }
 
-        if(difficulty.equals("Easy")){
-            fill(255, 87, 162);
+        p.strokeWeight(2);
+        if(difficulty == "Easy"){
+            p.fill(255, 87, 162);
         }
         else{
-            fill(255, 176, 214);
+            p.fill(255, 176, 214);
         }
-        rect(sWidth/2 - 260, 430, 140, 70, 28);
-        fill(0);
-        textAlign(CENTER, CENTER);
-        textSize(30);
-        text("Easy", sWidth/2 - 190, 465);
+        p.rect(sWidth/2 - 260, 430, 140, 70, 28);
+        p.fill(0);
+        p.textAlign(p.CENTER, p.CENTER);
+        p.textSize(30);
+        p.strokeWeight(1);
+        p.text("Easy", sWidth/2 - 190, 465);
 
-        if(difficulty.equals("Medium")){
-            fill(255, 87, 162);
+        p.strokeWeight(2);
+        if(difficulty == "Medium"){
+            p.fill(255, 87, 162);
         }
         else{
-            fill(255, 176, 214);
+            p.fill(255, 176, 214);
         }
-        rect(sWidth/2 - 70, 430, 140, 70, 28);
-        fill(0);
-        textAlign(CENTER, CENTER);
-        textSize(30);
-        text("Medium", sWidth/2, 465);
+        p.rect(sWidth/2 - 70, 430, 140, 70, 28);
+        p.fill(0);
+        p.textAlign(p.CENTER, p.CENTER);
+        p.textSize(30);
+        p.strokeWeight(1);
+        p.text("Medium", sWidth/2, 465);
 
-        if(difficulty.equals("Hard")){
-            fill(255, 87, 162);
+        p.strokeWeight(2);
+        if(difficulty == "Hard"){
+            p.fill(255, 87, 162);
         }
         else{
-            fill(255, 176, 214);
+            p.fill(255, 176, 214);
         }
-        rect(sWidth/2 + 120, 430, 140, 70, 28);
-        fill(0);
-        textAlign(CENTER, CENTER);
-        textSize(30);
-        text("Hard", sWidth/2 + 190, 465);
+        p.rect(sWidth/2 + 120, 430, 140, 70, 28);
+        p.fill(0);
+        p.textAlign(p.CENTER, p.CENTER);
+        p.textSize(30);
+        p.strokeWeight(1);
+        p.text("Hard", sWidth/2 + 190, 465);
         
     }
 
     
     function gameEnded(){
-        textFont(garamond);
-        stroke(0, 110, 0);
-        strokeWeight(4);
-        fill(140, 255, 140);
-        rect(sWidth/2 - 200, 195, 400, 300, 20);
-        textAlign(CENTER, CENTER);
-        textSize(50);
-        fill(255, 0, 0);
-        text("Puzzle Complete!", sWidth/2, 260);
+        p.textFont(garamond);
+        p.stroke(0, 110, 0);
+        p.strokeWeight(4);
+        p.fill(140, 255, 140);
+        p.rect(sWidth/2 - 200, 195, 400, 300, 20);
+        p.textAlign(p.CENTER, p.CENTER);
+        p.textSize(50);
+        p.fill(255, 0, 0);
+        p.stroke(255, 0, 0);
+        p.strokeWeight(2);
+        p.text("Puzzle Complete!", sWidth/2, 260);
 
-        fill(0);
-        textAlign(CENTER, CENTER);
-        textSize(20);
-        text("Total Errors: " + errors, sWidth/2, 320);
+        p.fill(0);
+        p.stroke(0);
+        p.strokeWeight(1);
+        p.textAlign(p.CENTER, p.CENTER);
+        p.textSize(20);
+        p.text("Total Errors: " + errors, sWidth/2, 320);
         
-        fill(0);
-        textAlign(CENTER, CENTER);
-        textSize(30);
-        text("Press Enter to Play Again", sWidth/2, 450);
+        p.fill(0);
+        p.strokeWeight(2);
+        p.textAlign(p.CENTER, p.CENTER);
+        p.textSize(30);
+        p.text("Press Enter to Play Again", sWidth/2, 450);
     }
 
     
 
     function setGameDifficulty(board){
-        let sx = mouseX - 435;
-        let sy = mouseY - 50;
+        let sx = getScaledMouseX() - 435;
+        let sy = getScaledMouseY() - 50;
         
         if(sx > sWidth/2 - 260 && sx < sWidth/2 - 120 && sy > 430 && sy < 500){
             engine.copyBoard(board, fullBoard);
@@ -723,22 +731,23 @@ export default function sketch(onButtonPress){
     }
 
     function drawGrid() {
-        stroke(0);
+        p.stroke(0);
         for (let i = 0; i <= 9; i++) {
             if (i % 3 == 0) {
-            strokeWeight(4);
+                p.strokeWeight(4);
             } else {
-            strokeWeight(1);
+                p.strokeWeight(1);
             }
-            line(i * cellSize, 50, i * cellSize, 680);
-            line(0, i * cellSize + 50, sWidth, i * cellSize + 50);
+            p.line(i * cellSize, 50, i * cellSize, 680);
+            p.line(0, i * cellSize + 50, sWidth, i * cellSize + 50);
         }
     }
 
     
     function drawNumbers() {
-        textAlign(CENTER, CENTER);
-        textSize(32);
+        p.textAlign(p.CENTER, p.CENTER);
+        p.textSize(32);
+        p.strokeWeight(1);
         
         
         
@@ -747,12 +756,14 @@ export default function sketch(onButtonPress){
             let value = displayBoard[row][col];
             if (value != 0) {
                 if(value != fullBoard[row][col]){
-                fill(255, 48, 48);
+                    p.stroke(255, 48, 48);
+                    p.fill(255, 48, 48);
                 }
                 else{
-                fill(0);
+                    p.stroke(0);
+                    p.fill(0);
                 }
-                text(value, col * cellSize + cellSize/2, row * cellSize + cellSize/2 + 50);
+                p.text(value, col * cellSize + cellSize/2, row * cellSize + cellSize/2 + 50);
             }
             }
         }
@@ -760,36 +771,37 @@ export default function sketch(onButtonPress){
 
 
     function displayNumbers(){
-        textAlign(CENTER, CENTER);
-        textSize(32);
-        fill(0);
+        p.textAlign(p.CENTER, p.CENTER);
+        p.textSize(32);
+        p.fill(0);
+       
 
         let displayX = 650;
         let displayY = 250;
         let buttonSize = 70;
         let gap = 10;
 
-        let sx = mouseX - 435;
-        let sy = mouseY - 50;
+        let sx = getScaledMouseX() - 435;
+        let sy = getScaledMouseY() - 50;
         for (let i = 1; i <= 9; i++) {
-            let row = (i - 1) / 3;
+            let row = Math.floor((i - 1) / 3);
             let col = (i - 1) % 3;
 
             let x = displayX + col * (buttonSize + gap);
             let y = displayY + row * (buttonSize + gap);
             let isHovering = sx > x && sx < x + buttonSize && sy > y && sy < y + buttonSize;
-            if(mousePressed && isHovering){
-            fill(255, 227, 200);
-            noStroke();
-            rect(x, y, buttonSize, buttonSize,12);
+            if(mousePressedSudoku && isHovering){
+                p.fill(255, 227, 200);
+                p.rect(x, y, buttonSize, buttonSize,12);
             }
             
-            fill(0); 
-            text(i, x + buttonSize/2, y + buttonSize/2);
-            noFill();   
-            stroke(0);
-            strokeWeight(2);
-            rect(x,y, buttonSize, buttonSize, 12);
+            p.fill(0); 
+            p.strokeWeight(1);
+            p.text(i, x + buttonSize/2, y + buttonSize/2);
+            p.noFill();   
+            p.stroke(0);
+            p.strokeWeight(2);
+            p.rect(x,y, buttonSize, buttonSize, 12);
         }
         colorNumbers();
         
@@ -821,26 +833,27 @@ export default function sketch(onButtonPress){
 
             if (completed) {
 
-            let row = (i - 1) / 3;
+            let row = Math.floor((i - 1) / 3);
             let col = (i - 1) % 3;
 
             let x = startX + col * (buttonSize + gap);
             let y = startY + row * (buttonSize + gap);
 
-            fill(186);
-            stroke(0);
-            strokeWeight(2);
-            rect(x, y, buttonSize, buttonSize, 12);
+            p.fill(186);
+            p.stroke(0);
+            p.strokeWeight(2);
+            p.rect(x, y, buttonSize, buttonSize, 12);
 
-            fill(0);
-            text(i, x + buttonSize/2, y + buttonSize/2);
+            p.fill(0);
+            p.strokeWeight(1);
+            p.text(i, x + buttonSize/2, y + buttonSize/2);
             }
         }
     }
     function mousePressedSudoku() {
 
-        let sx = mouseX - 435;
-        let sy = mouseY - 50;
+        let sx = getScaledMouseX() - 435;
+        let sy = getScaledMouseY() - 50;
 
 
         if(!gameStarted){
@@ -848,7 +861,7 @@ export default function sketch(onButtonPress){
 
             if(sx > sWidth/2 - 150 && sx < sWidth/2 + 150 && sy > 240 && sy < 340){
             gameStarted = true;
-            startTime = millis();
+            startTime = p.millis();
             elapsedTime = 0;
             }
         }
@@ -866,13 +879,13 @@ export default function sketch(onButtonPress){
             engine.copyBoard(displayBoard, fullBoard);
             difficulty = "Easy";
             engine.easyBoard(displayBoard);
-            startTime = millis();
+            startTime = p.millis();
             elapsedTime = 0;
         }
 
         if (sx >= 0 && sx < sWidth && sy >= 50 && sy < 680) {
-            let r = (int)(sy - 50) / cellSize;
-            let c = (int)(sx / cellSize);
+            let r = Math.floor((sy - 50) / cellSize);
+            let c = Math.floor((sx / cellSize));
         
             if (r >= 0 && r < 9 && c >= 0 && c < 9) {
             if(displayBoard[r][c] == 0 || displayBoard[r][c] != fullBoard[r][c]){
@@ -916,8 +929,8 @@ export default function sketch(onButtonPress){
             if(sx >= displayX && sx < displayX + buttonSize * 3 + gap *2 &&
             sy >= displayY && sy < displayY + buttonSize * 3 + gap *2){
 
-            let row = (int)((sy - displayY) / (buttonSize + gap));
-            let col = (int)((sx - displayX) / (buttonSize + gap));
+            let row = Math.floor((sy - displayY) / (buttonSize + gap));
+            let col = Math.floor((sx - displayX) / (buttonSize + gap));
 
             let clicked = row * 3 + col + 1;
             
@@ -957,14 +970,14 @@ export default function sketch(onButtonPress){
 
     }
 
-    function keyPressed(){
-        if(gameWon && key == ENTER){
+    p.keyPressed = () => {
+        if(gameWon && p.keyCode == 13){
             gameWon = false;
             gameStarted = false;
             selectedRow = -1;
             selectedCol = -1;
             errors = 0;
-            startTime = millis();
+            startTime = p.millis();
             elapsedTime = 0;
             fullBoard = engine.createBoard();
             engine.copyBoard(displayBoard, fullBoard);
@@ -973,15 +986,20 @@ export default function sketch(onButtonPress){
 
         }
 
-        if((key == BACKSPACE || key == DELETE) && selectedRow != -1 && selectedCol != -1){
+        if((p.keyCode == 8 || p.keyCode == 46) && selectedRow != -1 && selectedCol != -1){
             if(displayBoard[selectedRow][selectedCol] != 0 && displayBoard[selectedRow][selectedCol] != fullBoard[selectedRow][selectedCol]){
             displayBoard[selectedRow][selectedCol] = 0;
             return;
             }
 
         }
-        if (key >= '1' && key <= '9') {
-            selectedNumber = key - '0';
+        if (p.keyCode >= 49 && p.keyCode <= 57 || p.keyCode >= 97 && p.keyCode <= 105) {
+            if (p.keyCode >= 49 && p.keyCode <= 57) {
+                selectedNumber = p.keyCode - 48;
+            }
+            if (p.keyCode >= 97 && p.keyCode <= 105) {
+                selectedNumber = p.keyCode - 96;
+            }
             if(selectedRow != -1 && selectedCol != -1){
             if(displayBoard[selectedRow][selectedCol] == selectedNumber && displayBoard[selectedRow][selectedCol] != fullBoard[selectedRow][selectedCol]){
                 displayBoard[selectedRow][selectedCol] = 0;
@@ -1001,22 +1019,22 @@ export default function sketch(onButtonPress){
             }
             }
         }
-    }
+    };
 
     function highlightSelected() {
         if (selectedRow != -1 && selectedCol != -1) {
             let val = displayBoard[selectedRow][selectedCol];
             if(val != 0 && val != fullBoard[selectedRow][selectedCol]){
-            fill(196, 196, 196);    
+            p.fill(196, 196, 196);    
             }
             else{
-            fill(255, 31, 143);
+            p.fill(255, 31, 143);
 
             }
             
             
-            noStroke();
-            rect(selectedCol*cellSize, selectedRow * cellSize + 50, cellSize, cellSize);
+            p.noStroke();
+            p.rect(selectedCol*cellSize, selectedRow * cellSize + 50, cellSize, cellSize);
         }
         
         else if (selectedNumber > 0) {
@@ -1024,26 +1042,34 @@ export default function sketch(onButtonPress){
             for (let r = 0; r < 9; r++) {
             for (let c = 0; c < 9; c++) {
                 if (displayBoard[r][c] == selectedNumber && displayBoard[r][c] == fullBoard[r][c]) {
-                fill(255, 31, 143);
-                noStroke();
-                rect(c * cellSize, r * cellSize + 50, cellSize, cellSize);
+                p.fill(255, 31, 143);
+                p.noStroke();
+                p.rect(c * cellSize, r * cellSize + 50, cellSize, cellSize);
                 }
             }
             }
         }
     }
 
-
-    p.mousePressed = () => {
+    function getScaledMouseX() {
         let scaleX = p.width / 1500;
         let scaleY = p.height / 800;
         let scaleFactor = Math.min(scaleX, scaleY);
-
         let offsetX = (p.width - 1500 * scaleFactor) / 2;
-        let offsetY = (p.height - 800 * scaleFactor) / 2;
+        return (p.mouseX - offsetX) / scaleFactor;
+    }
 
-        let mx = (p.mouseX - offsetX) / scaleFactor;
-        let my = (p.mouseY - offsetY) / scaleFactor;
+    function getScaledMouseY() {
+        let scaleX = p.width / 1500;
+        let scaleY = p.height / 800;
+        let scaleFactor = Math.min(scaleX, scaleY);
+        let offsetY = (p.height - 800 * scaleFactor) / 2;
+        return (p.mouseY - offsetY) / scaleFactor;
+    }
+
+    p.mousePressed = () => {
+        let mx = getScaledMouseX();
+        let my = getScaledMouseY();
 
         if(mx > 1285 && mx < 1315 && my > 755 && my < 785){
             contactOpen = !contactOpen;
@@ -1056,5 +1082,5 @@ export default function sketch(onButtonPress){
 
 
    
-}
+    }
 }

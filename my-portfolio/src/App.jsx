@@ -27,6 +27,17 @@ export default function App() {
           }
         }}
         />}/>
+
+        <Route path="/about" element={<About 
+        
+        onButtonPress={(button)=>{
+          
+          if(button === "SUDOKU"){
+            navigate("/sudoku");
+          }
+
+        }}
+        />}/>
         <Route path="/sudoku" element={<Sudoku />} />
         <Route path="/about" element={<About />} />     
       </Routes>
