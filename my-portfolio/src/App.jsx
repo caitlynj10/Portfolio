@@ -1,13 +1,9 @@
 import './App.css'
-import Resume from "./pages/Resume.jsx";
-import SpongeBobGame from './pages/SpongeBobGame.jsx';
-import AiHorrorStory from './pages/AiHorrorStory.jsx';
-import Contact from './pages/Contact.jsx';
-import Sudoku from './pages/Sudoku.jsx';
 import { useNavigate, BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
+import Sudoku from "./components/Sudoku/Sudoku";
 
 export default function App() {
   const navigate = useNavigate();
@@ -23,7 +19,7 @@ export default function App() {
         onButtonPress={(button)=>{
           
           if(button === "ENTER_SITE"){
-            navigate("/contact");
+            navigate("/sudoku");
           }
 
           if(button === "LEARN_MORE"){
@@ -31,11 +27,7 @@ export default function App() {
           }
         }}
         />}/>
-        <Route path="/resume" element={<Resume />} />
-        <Route path="/spongebob-game" element={<SpongeBobGame />} />
         <Route path="/sudoku" element={<Sudoku />} />
-        <Route path="/ai-horror-story" element={<AiHorrorStory />} />
-        <Route path="/contact" element={<Contact />} />  
         <Route path="/about" element={<About />} />     
       </Routes>
    
