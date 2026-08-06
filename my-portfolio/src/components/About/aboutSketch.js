@@ -1,6 +1,7 @@
 export default function sketch(onButtonPress, onLoaded){
     return function(p){
     let pressStart;
+    let arial;
     let selectedOption = 0;
     let gitIM;
     let linkedIM;
@@ -15,6 +16,7 @@ export default function sketch(onButtonPress, onLoaded){
         p.createCanvas(window.innerWidth, window.innerHeight);
         try{
             pressStart  = await p.loadFont('/fonts/PressStart2P.ttf');
+            arial = await p.loadFont('/fonts/ARIAL.TTF');
             pressStart  = await p.loadFont('/fonts/PressStart2P.ttf');
             gitIM = await p.loadImage("/icons/Github.png");
             linkedIM = await p.loadImage("/icons/Linkedin.png");
@@ -246,6 +248,23 @@ export default function sketch(onButtonPress, onLoaded){
         p.noFill();
         p.stroke(0,0,0);
         p.circle(1425,300,100);
+
+        p.stroke(176, 176, 176);
+        p.strokeWeight(3);
+        p.line(72.5,535, 72.5, 545);
+        p.line(72.5, 580, 72.5, 590);
+        p.line(45, 562.5, 55, 562.5);
+        p.line(90, 562.5, 100, 562.5);
+        p.stroke(0);
+
+        p.textAlign(p.CENTER,p.CENTER);
+        p.fill(176, 176, 176);
+        p.textFont(arial);
+        p.textSize(20);
+        p.text("X", 1425, 275);
+        p.text("A", 1450,300);
+        p.text("Y", 1400, 300);
+        p.text("B", 1425, 325);
 
         
         
