@@ -9,10 +9,21 @@ import SpongeBob from "./components/SpongeBob/SpongeBob";
 export default function App() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const [isPoweringOff, setIsPoweringOff] = useState(false);
 
   const handleNavigate = (path) => {
-    setIsLoading(true);
-    navigate(path);
+    if(path === "/"){
+      setIsPoweringOff(true);
+      setTimeout(() =>{
+        setIsPoweringOff(false);
+        navigate("/");
+      }, 3000);
+    }
+    else{
+      setIsLoading(true);
+      navigate(path);
+    }
+    
   };
 
   const handlePageReady = () => {
@@ -25,6 +36,12 @@ export default function App() {
       {isLoading && (
         <div className="global-loader">
           <h1>Loading...</h1>
+        </div>
+      )}
+
+      {isPoweringOff && (
+        <div className="global-loader">
+          <h1>Powering off...</h1>
         </div>
       )}
     
@@ -40,6 +57,10 @@ export default function App() {
           if(button === "LEARN_MORE"){
             handleNavigate("/about");
           }
+
+          
+
+          
         }}
         />}/>
 
@@ -55,10 +76,28 @@ export default function App() {
             handleNavigate("/spongebob");
           }
 
+          if(button === "POWER_OFF"){
+            handleNavigate("/");
+          }
+
         }}
         />}/>
-        <Route path="/sudoku" element={<Sudoku onLoaded={handlePageReady}/>} />
-        <Route path="/spongebob" element={<SpongeBob onLoaded={handlePageReady}/>}/>
+        <Route path="/sudoku" element={<Sudoku 
+        onLoaded={handlePageReady}
+        onButtonPress={(button)=>{
+          if(button === "POWER_OFF"){
+            handleNavigate("/");
+          }
+        }}
+        />} />
+        <Route path="/spongebob" element={<SpongeBob
+        onLoaded={handlePageReady}
+        onButtonPress={(button)=>{
+          if(button === "POWER_OFF"){
+            handleNavigate("/");
+          }
+        }}
+        />}/>
       </Routes>
    
     

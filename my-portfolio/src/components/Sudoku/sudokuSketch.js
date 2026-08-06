@@ -266,7 +266,7 @@ class SudokuGame{
     }
  
 }
-export default function sketch(onLoaded){
+export default function sketch(onButtonPress, onLoaded){
     return function(p){
     let pressStart;
     let arial;
@@ -456,6 +456,16 @@ export default function sketch(onLoaded){
     }
 
     function drawContactInfo(){
+        let scaleX = p.width / 1500;
+        let scaleY = p.height / 800;
+        let scaleFactor = Math.min(scaleX, scaleY);
+
+        let offsetX = (p.width - 1500 * scaleFactor) / 2;
+        let offsetY = (p.height - 800 * scaleFactor) / 2;
+
+        let mx = (p.mouseX - offsetX) / scaleFactor;
+        let my = (p.mouseY - offsetY) / scaleFactor;
+
         p.stroke(0);
         p.strokeWeight(4);
         p.fill(255,255,255);
@@ -477,8 +487,25 @@ export default function sketch(onLoaded){
         p.textSize(10);
         p.fill(0,0,0);
         p.text("@caitlynj10", 1195, 610);
+        if(mx>1145 && mx<1300 && my>590 && my<630){
+            p.fill(219, 0, 148);
+            p.text("@caitlynj10", 1195, 610);
+        }
+        p.fill(0,0,0);
+
         p.text("/caitlyn-jones1022", 1195, 655);
+        if(mx>1145 && mx<1375 && my>635 && my<675){
+            p.fill(219, 0, 148);
+            p.text("/caitlyn-jones1022", 1195, 655);
+        }
+        p.fill(0,0,0);
+
         p.text("caitlyn.jones1022@gmail.com", 1195, 700);
+        if(mx>1145 && mx<1470 && my>680 && my<720){
+            p.fill(219, 0, 148);
+            p.text("caitlyn.jones1022@gmail.com", 1195, 700);
+        }
+        p.fill(0,0,0);
 
     }
 
@@ -1102,6 +1129,24 @@ export default function sketch(onLoaded){
         }
 
         mousePressedSudoku();
+
+        if(contactOpen){
+            if(mx>1145 && mx<1300 && my>590 && my<630){
+                window.open("https://github.com/caitlynj10", "_blank", "noopener,noreferrer");            
+            }
+
+            if(mx>1145 && mx<1375 && my>635 && my<675){
+                window.open("https://www.linkedin.com/in/caitlyn-jones1022/", "_blank", "noopener,noreferrer");
+            }
+
+            if(mx>1145 && mx<1470 && my>680 && my<720){
+                window.open("https://mail.google.com/#compose", "_blank", "noopener,noreferrer");
+            }
+        }
+
+        if(mx>40 && mx<60 && my > 740 && my< 760){
+            onButtonPress("POWER_OFF");
+        }
         
 
     };
