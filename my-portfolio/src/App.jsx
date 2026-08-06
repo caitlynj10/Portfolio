@@ -1,45 +1,58 @@
 import './App.css'
-import { useNavigate, BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useNavigate, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
 import Sudoku from "./components/Sudoku/Sudoku";
 
 export default function App() {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleNavigate = (path) => {
+    setIsLoading(true);
+    navigate(path);
+  };
+
+  const handlePageReady = () => {
+    setIsLoading(false);
+  };
   
   return (
     <>
       
-      
+      {isLoading && (
+        <div className="global-loader">
+          <h1>Loading...</h1>
+        </div>
+      )}
     
       <Routes>
         <Route path="/" element={<Home 
-        
+        onLoaded={handlePageReady}
         onButtonPress={(button)=>{
           
           if(button === "ENTER_SITE"){
-            navigate("/sudoku");
+            handleNavigate("/sudoku");
           }
 
           if(button === "LEARN_MORE"){
-            navigate("/about");
+            handleNavigate("/about");
           }
         }}
         />}/>
 
         <Route path="/about" element={<About 
-        
+        onLoaded={handlePageReady}
         onButtonPress={(button)=>{
           
           if(button === "SUDOKU"){
-            navigate("/sudoku");
+            handleNavigate("/sudoku");
           }
 
         }}
         />}/>
-        <Route path="/sudoku" element={<Sudoku />} />
-        <Route path="/about" element={<About />} />     
+        <Route path="/sudoku" element={<Sudoku onLoaded={handlePageReady}/>} />
       </Routes>
    
     

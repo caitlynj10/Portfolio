@@ -1,4 +1,4 @@
-export default function sketch(onButtonPress){
+export default function sketch(onButtonPress, onLoaded){
     return function(p){
     let pressStart;
     let selectedOption = 0;
@@ -11,11 +11,20 @@ export default function sketch(onButtonPress){
 
     p.setup = async () =>{
         p.createCanvas(window.innerWidth, window.innerHeight);
-        pressStart  = await p.loadFont('/fonts/PressStart2P.ttf');
-        gitIM = await p.loadImage("/icons/Github.png");
-        linkedIM = await p.loadImage("/icons/Linkedin.png");
-        emailIM = await p.loadImage("/icons/Email.png");
-        qmIM = await p.loadImage("/icons/QM.png");
+        try{
+            pressStart  = await p.loadFont('/fonts/PressStart2P.ttf');
+            gitIM = await p.loadImage("/icons/Github.png");
+            linkedIM = await p.loadImage("/icons/Linkedin.png");
+            emailIM = await p.loadImage("/icons/Email.png");
+            qmIM = await p.loadImage("/icons/QM.png");
+        }catch(error){
+            console.error("Error loading assets in sketch:", error);
+        }finally{
+            if(onLoaded){
+                onLoaded();
+            }
+        }
+       
 
     };
 
@@ -153,12 +162,16 @@ export default function sketch(onButtonPress){
 
     function drawArrows(){
         p.stroke(207, 27, 189);
-        if(selectedOption === 0){
-            p.triangle(560,415,580,425,560,435);
+        if(p.frameCount % 80 < 40){
+            if(selectedOption === 0){
+                p.triangle(560,415,580,425,560,435);
+            }
+            else{
+                p.triangle(560,490,580,500,560,510);
+            }
+
         }
-        else{
-            p.triangle(560,490,580,500,560,510);
-        }
+        
         
     }
 

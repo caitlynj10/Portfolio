@@ -2,11 +2,18 @@ import { useEffect, useRef } from "react";
 import p5 from "p5";
 import sketch from "./homeSketch";
 
-export default function Home({onButtonPress}) {
+export default function Home({onButtonPress, onLoaded}) {
   const container = useRef();
+  const onButtonPressRef = useRef(onButtonPress);
+  const onLoadedRef = useRef(onLoaded);
+
+  useEffect(() =>{
+    onButtonPressRef.current = onButtonPress;
+    onLoadedRef.current = onLoaded;
+  })
 
   useEffect(() => {
-    const p5Instance = new p5(sketch(onButtonPress), container.current);
+    const p5Instance = new p5(sketch((...args) => onButtonPressRef.current?.(...args), () => onLoadedRef.current?.()), container.current);
     const preventScroll = (e) => {
         if(["ArrowUp","ArrowDown","Enter"].includes(e.key)){
             e.preventDefault();
@@ -17,7 +24,7 @@ export default function Home({onButtonPress}) {
       p5Instance.remove();
       window.removeEventListener("keydown",preventScroll);
     };
-  }, [onButtonPress]);
+  }, []);
 
   return (
     <div

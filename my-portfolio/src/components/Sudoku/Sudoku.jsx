@@ -2,11 +2,16 @@ import { useEffect, useRef } from "react";
 import p5 from "p5";
 import sketch from "./sudokuSketch";
 
-export default function Sudoku() {
+export default function Sudoku({onLoaded}) {
   const container = useRef();
+  const onLoadedRef = useRef(onLoaded);
 
+  useEffect(()=>{
+    onLoadedRef.current = onLoaded;
+  })
   useEffect(() => {
-    const p5Instance = new p5(sketch(), container.current);
+    const p5Instance = new p5(sketch((...args) => onLoadedRef.current?.()), container.current);
+    
     
     return () => {
       p5Instance.remove();

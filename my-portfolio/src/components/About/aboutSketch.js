@@ -1,4 +1,4 @@
-export default function sketch(onButtonPress){
+export default function sketch(onButtonPress, onLoaded){
     return function(p){
     let pressStart;
     let selectedOption = 0;
@@ -11,14 +11,24 @@ export default function sketch(onButtonPress){
     //0 = enter site; 1 = learn more
 
     p.setup = async () =>{
+    
         p.createCanvas(window.innerWidth, window.innerHeight);
-        pressStart  = await p.loadFont('/fonts/PressStart2P.ttf');
-        pressStart  = await p.loadFont('/fonts/PressStart2P.ttf');
-        gitIM = await p.loadImage("/icons/Github.png");
-        linkedIM = await p.loadImage("/icons/Linkedin.png");
-        emailIM = await p.loadImage("/icons/Email.png");
-        qmIM = await p.loadImage("/icons/QM.png");
-        profPic = await p.loadImage("/icons/ProfPic.jpg");
+        try{
+            pressStart  = await p.loadFont('/fonts/PressStart2P.ttf');
+            pressStart  = await p.loadFont('/fonts/PressStart2P.ttf');
+            gitIM = await p.loadImage("/icons/Github.png");
+            linkedIM = await p.loadImage("/icons/Linkedin.png");
+            emailIM = await p.loadImage("/icons/Email.png");
+            qmIM = await p.loadImage("/icons/QM.png");
+            profPic = await p.loadImage("/icons/ProfPic.jpg");
+        }catch(error){
+            console.error("Error loading assets in sketch: ", error);
+        }finally{
+            if(onLoaded){
+                onLoaded();
+            }
+        }
+        
     };
 
     p.draw = () => {
@@ -199,13 +209,16 @@ export default function sketch(onButtonPress){
         p.fill(255, 69, 201);
         p.stroke(0);
         p.strokeWeight(1);
-        if(selectedOption === 0){
-            p.triangle(1005,525,1015,530,1005,535);
-        }
-        else{
-            p.triangle(1005,545,1015,550,1005,555);
+        if(p.frameCount % 80 < 40){
+            if(selectedOption === 0){
+                p.triangle(1005,525,1015,530,1005,535);
+            }
+            else{
+                p.triangle(1005,545,1015,550,1005,555);
 
+            }
         }
+        
        
         
         

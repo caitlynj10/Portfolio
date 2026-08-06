@@ -266,7 +266,7 @@ class SudokuGame{
     }
  
 }
-export default function sketch(onButtonPress){
+export default function sketch(onLoaded){
     return function(p){
     let pressStart;
     let selectedOption = 0;
@@ -296,12 +296,21 @@ export default function sketch(onButtonPress){
 
     p.setup = async () =>{
         p.createCanvas(window.innerWidth, window.innerHeight);
-        pressStart  = await p.loadFont('/fonts/PressStart2P.ttf');
-        garamond = await p.loadFont('/fonts/Garamond.ttf');
-        gitIM = await p.loadImage("/icons/Github.png");
-        linkedIM = await p.loadImage("/icons/Linkedin.png");
-        emailIM = await p.loadImage("/icons/Email.png");
-        qmIM = await p.loadImage("/icons/QM.png");
+        try{
+            pressStart  = await p.loadFont('/fonts/PressStart2P.ttf');
+            garamond = await p.loadFont('/fonts/Garamond.ttf');
+            gitIM = await p.loadImage("/icons/Github.png");
+            linkedIM = await p.loadImage("/icons/Linkedin.png");
+            emailIM = await p.loadImage("/icons/Email.png");
+            qmIM = await p.loadImage("/icons/QM.png");
+        }catch(error){
+            console.error("Error loading assets in sketch:", error);
+        }finally{
+            if(onLoaded){
+                onLoaded();
+            }
+        }
+        
         
         setupSudoku();
     };
