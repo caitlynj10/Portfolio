@@ -1,0 +1,32 @@
+import { useEffect, useRef } from "react";
+import p5 from "p5";
+import sketch from "./spongebobSketch";
+
+export default function SpongeBob({onLoaded}) {
+  const container = useRef();
+  const onLoadedRef = useRef(onLoaded);
+
+  useEffect(()=>{
+    onLoadedRef.current = onLoaded;
+  })
+  useEffect(() => {
+    const p5Instance = new p5(sketch((...args) => onLoadedRef.current?.()), container.current);
+    
+    
+    return () => {
+      p5Instance.remove();
+    };
+  }, []);
+
+  return (
+    <div
+      ref={container}
+      style={{
+        width: "100vw",
+        height: "100vh",
+        overflow: "hidden",
+        
+      }}
+    />
+  );
+}

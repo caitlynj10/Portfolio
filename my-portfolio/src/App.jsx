@@ -4,6 +4,7 @@ import { useState } from "react";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
 import Sudoku from "./components/Sudoku/Sudoku";
+import SpongeBob from "./components/SpongeBob/SpongeBob";
 
 export default function App() {
   const navigate = useNavigate();
@@ -50,9 +51,14 @@ export default function App() {
             handleNavigate("/sudoku");
           }
 
+          if(button === "SPONGEBOB_GAME"){
+            handleNavigate("/spongebob");
+          }
+
         }}
         />}/>
         <Route path="/sudoku" element={<Sudoku onLoaded={handlePageReady}/>} />
+        <Route path="/spongebob" element={<SpongeBob onLoaded={handlePageReady}/>}/>
       </Routes>
    
     
