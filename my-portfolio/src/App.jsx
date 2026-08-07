@@ -5,6 +5,7 @@ import Home from "./components/Home/Home";
 import About from "./components/About/About";
 import Sudoku from "./components/Sudoku/Sudoku";
 import SpongeBob from "./components/SpongeBob/SpongeBob";
+import Explore from "./components/Explore/Explore";
 
 export default function App() {
   const navigate = useNavigate();
@@ -51,15 +52,12 @@ export default function App() {
         onButtonPress={(button)=>{
           
           if(button === "ENTER_SITE"){
-            handleNavigate("/sudoku");
+            handleNavigate("/explore");
           }
 
           if(button === "LEARN_MORE"){
             handleNavigate("/about");
           }
-
-          
-
           
         }}
         />}/>
@@ -95,6 +93,22 @@ export default function App() {
         onButtonPress={(button)=>{
           if(button === "POWER_OFF"){
             handleNavigate("/");
+          }
+        }}
+        />}/>
+
+        <Route path="/explore" element={<Explore
+        onLoaded={handlePageReady}
+        onButtonPress={(button)=>{
+          if(button === "POWER_OFF"){
+            handleNavigate("/");
+          }
+          if(button === "SUDOKU"){
+            handleNavigate("/sudoku");
+          }
+
+          if(button === "SPONGEBOB_GAME"){
+            handleNavigate("/spongebob");
           }
         }}
         />}/>
