@@ -167,10 +167,6 @@ export default function sketch(onButtonPress, onLoaded){
         p.fill(255,0,0);
         p.circle(50,750,20);
 
-        p.stroke(0,0,0);
-        p.line(1400,50,1450,50);
-        p.line(1400,60,1450,60);
-        p.line(1400,70,1450,70);
 
         p.noFill();
         p.stroke(0,0,0);
@@ -180,7 +176,22 @@ export default function sketch(onButtonPress, onLoaded){
         p.fill(0);
         p.ellipse(765,770,10,10);
 
-        p.image(qmIM, 1285,755,30,30);
+        p.fill(250, 125, 182);
+        p.ellipse(1300,760,10,10);
+        p.ellipse(1300,780,10,10);
+
+        p.ellipse(1300,760,8,8);
+        p.ellipse(1300,780,8,8);
+        p.textAlign(p.LEFT,p.CENTER);
+        p.textSize(12);
+        p.textFont(pressStart);
+        p.fill(0);
+        p.strokeWeight(0);
+        p.text("Contact", 1310, 760);
+        p.text("Home", 1310, 780);
+        
+        p.stroke(0,0,0);
+        p.image(qmIM,1450,20, 30,30);
 
         p.strokeWeight(0);
         p.textAlign(p.CENTER, p.CENTER);
@@ -264,7 +275,7 @@ export default function sketch(onButtonPress, onLoaded){
         let mx = getScaledMouseX();
         let my = getScaledMouseY();
 
-        if(mx > 1285 && mx < 1315 && my > 755 && my < 785){
+        if(mx > 1295 && mx < 1305 && my > 755 && my < 765){
             contactOpen = !contactOpen;
         }
 
