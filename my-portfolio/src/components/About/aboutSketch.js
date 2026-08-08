@@ -222,18 +222,46 @@ export default function sketch(onButtonPress, onLoaded){
     }
 
     function drawMenu(){
+        let scaleX = p.width / 1500;
+        let scaleY = p.height / 800;
+        let scaleFactor = Math.min(scaleX, scaleY);
+
+        let offsetX = (p.width - 1500 * scaleFactor) / 2;
+        let offsetY = (p.height - 800 * scaleFactor) / 2;
+
+        let mx = (p.mouseX - offsetX) / scaleFactor;
+        let my = (p.mouseY - offsetY) / scaleFactor;
+
         p.textAlign(p.LEFT,p.CENTER);
         p.fill(130, 17, 66); 
         p.textSize(20);
         p.text("EXPLORE SITE", 1025, 450);
+        if(mx>1025 && mx< 1270 && my>435 && my<465){
+            p.fill(207, 27, 189)
+            p.text("EXPLORE SITE", 1025, 450);
+        }
+        p.fill(130, 17, 66);
         p.text("PLAY GAMES", 1025, 500);
+        if(mx>1025 && mx< 1225 && my>485 && my<515){
+            p.fill(207, 27, 189);
+            p.text("PLAY GAMES", 1025, 500);
+        }
+        p.fill(130, 17, 66);
         if(inMenu == true){
             p.textSize(10);
-            p. text("KRABBY PATTY CATCHER", 1035, 530);
+            p.text("KRABBY PATTY CATCHER", 1035, 530);
+            if(mx > 1035 && mx<1235 && my > 525 && my<535){
+                p.fill(207, 27, 189)
+                p.text("KRABBY PATTY CATCHER", 1035, 530);
+            }
+            p.fill(130, 17, 66);
             p.text("SUDOKU", 1035, 550);
-
+            if(mx > 1035 && mx<1100 && my > 545 && my<555){
+                p.fill(207, 27, 189)
+                p.text("SUDOKU", 1035, 550);
+            }
         }
-        
+   
 
     }
     function drawArrows(){
@@ -422,6 +450,36 @@ export default function sketch(onButtonPress, onLoaded){
         if(mx > 1295 && mx < 1305 && my > 755 && my < 765){
             contactOpen = !contactOpen;
         }
+        if (mx > 1025 && mx < 1270 && my>435 && my<465) {
+            selectedOption = 0;
+            inMenu = false;
+            onButtonPress("ENTER_SITE");
+        }
+        if (mx>1025 && mx< 1225 && my>485 && my<515) {
+                selectedOption = 1;
+                inMenu = !inMenu;
+                gameOption = 0;
+        }
+
+        if(inMenu){
+            if(mx > 1035 && mx<1235 && my > 525 && my<535){
+                gameOption = 0;
+                activeMenu = 1;
+                onButtonPress("SPONGEBOB_GAME");
+            }
+
+        }
+        if(inMenu){
+            if(mx > 1035 && mx<1100 && my > 545 && my<555){
+                gameOption = 1;
+                activeMenu = 1;
+                onButtonPress("SUDOKU");
+            }
+
+        }
+
+        
+        
 
         if(mx > 1295 && mx < 1305 && my > 775 && my < 785){
             onButtonPress("HOME");
