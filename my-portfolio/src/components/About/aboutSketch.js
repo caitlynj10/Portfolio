@@ -9,6 +9,9 @@ export default function sketch(onButtonPress, onLoaded){
     let qmIM;
     let profPic;
     let contactOpen = false;
+    let inMenu = false;
+    let gameOption = 0;
+    let activeMenu = 0;
     //0 = enter site; 1 = learn more
 
     p.setup = async () =>{
@@ -67,27 +70,61 @@ export default function sketch(onButtonPress, onLoaded){
 
     p.keyPressed = () => {
         console.log('key pressed', p.key);
-        if(p.keyCode == 40){
+        if(p.keyCode === 40 && selectedOption == 0){ //down
             selectedOption = 1;
         }
 
-        if(p.keyCode === 38){
+        if(p.keyCode === 38 && selectedOption == 1 && inMenu == false){//up
             selectedOption = 0;
         }
 
-        if (p.keyCode === 13) {
-
-            if(selectedOption === 0){
-                onButtonPress("SPONGEBOB_GAME");
-            }
-
-
-            if(selectedOption === 1){
-                onButtonPress("SUDOKU");
-            }
-
+        if (p.keyCode === 13 && selectedOption == 1 && inMenu == false) {//enter
+            inMenu = true;
+            gameOption = 0;
+            activeMenu = 0;
+        } 
+        if(p.keyCode === 38 && selectedOption == 1 && inMenu == true && gameOption == 0){
+            inMenu = false;
+            gameOption = 0;
+            activeMenu = 0;
         }
 
+        if(p.keyCode === 8 && selectedOption == 1 && inMenu == true && gameOption == 0){
+            inMenu = false;
+            gameOption = 0;
+            activeMenu = 0;
+        }
+
+        if(p.keyCode === 40 && selectedOption == 1 && inMenu == true && gameOption == 0){
+            gameOption = 1;
+            activeMenu = 1;
+        }
+
+        if(p.keyCode === 38 && selectedOption == 1 && inMenu == true && gameOption == 1){
+            gameOption = 0;
+            activeMenu = 1;
+        }
+
+        if(gameOption == 0 && activeMenu == 1){
+            if(p.keyCode === 13){
+                onButtonPress("SPONGEBOB_GAME");
+            }
+        }
+
+        if(gameOption == 1 && activeMenu == 1){
+            if(p.keyCode === 13){
+                onButtonPress("SUDOKU");
+            }
+        }
+
+        if(selectedOption == 0){
+            if(p.keyCode === 13){
+                onButtonPress("ENTER_SITE");
+            }
+        }
+
+      
+      
 
     };
 
@@ -96,6 +133,8 @@ export default function sketch(onButtonPress, onLoaded){
         p.background(74, 8, 39);
         
         //Background
+        p.stroke(0);
+        p.strokeWeight(2);
         p.fill(130, 17, 66);
         p.rect(10,10,1480,780);
 
@@ -200,11 +239,15 @@ export default function sketch(onButtonPress, onLoaded){
         p.textAlign(p.LEFT,p.CENTER);
         p.fill(130, 17, 66); 
         p.textSize(20);
-        p.text("EXPLORE SITE", 1000, 450);
-        p.text("PLAY GAMES", 1000, 500);
-        p.textSize(10);
-        p. text("KRABBY PATTY CATCHER", 1020, 530);
-        p.text("SUDOKU", 1020, 550);
+        p.text("EXPLORE SITE", 1025, 450);
+        p.text("PLAY GAMES", 1025, 500);
+        if(inMenu == true){
+            p.textSize(10);
+            p. text("KRABBY PATTY CATCHER", 1035, 530);
+            p.text("SUDOKU", 1035, 550);
+
+        }
+        
 
     }
     function drawArrows(){
@@ -212,18 +255,28 @@ export default function sketch(onButtonPress, onLoaded){
         p.stroke(0);
         p.strokeWeight(1);
         if(p.frameCount % 80 < 40){
-            if(selectedOption === 0){
-                p.triangle(1005,525,1015,530,1005,535);
+            if(selectedOption == 0 && inMenu == false){
+                p.triangle(995, 440, 1015, 450, 995, 460);
             }
-            else{
-                p.triangle(1005,545,1015,550,1005,555);
-
+            if(selectedOption == 1 && inMenu == false){
+                p.triangle(995, 490, 1015, 500, 995, 510);
+            }
+            if(selectedOption == 1 && inMenu == true && gameOption == 0){
+                p.triangle(1020,525,1030,530,1020,535);
+            }
+        
+            if(selectedOption == 1 && inMenu == true && gameOption == 1){
+                p.triangle(1020,545,1030,550,1020,555);
             }
         }
+        if(selectedOption == 1 && inMenu == true && gameOption == 0){
+            p.triangle(995, 495, 1005, 510,1015, 495);
+        }  
+        if(selectedOption == 1 && inMenu == true && gameOption == 1){
+            p.triangle(995, 495, 1005, 510,1015, 495);
+        }    
         
-       
-        
-        
+          
     }
 
     function drawControls(){    

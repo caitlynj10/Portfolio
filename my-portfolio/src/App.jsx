@@ -66,6 +66,10 @@ export default function App() {
         onLoaded={handlePageReady}
         onButtonPress={(button)=>{
           
+          if(button === "ENTER_SITE"){
+            handleNavigate("/explore");
+          }
+          
           if(button === "SUDOKU"){
             handleNavigate("/sudoku");
           }

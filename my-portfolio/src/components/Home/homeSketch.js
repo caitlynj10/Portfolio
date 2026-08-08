@@ -88,6 +88,8 @@ export default function sketch(onButtonPress, onLoaded){
         p.background(74, 8, 39);
         
         //Background
+        p.stroke(0);
+        p.strokeWeight(2);
         p.fill(130, 17, 66);
         p.rect(10,10,1480,780);
 
