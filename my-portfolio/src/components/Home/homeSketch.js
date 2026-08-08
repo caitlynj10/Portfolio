@@ -339,6 +339,10 @@ export default function sketch(onButtonPress, onLoaded){
             contactOpen = !contactOpen;
         }
 
+        if(mx > 1295 && mx < 1305 && my > 775 && my < 785){
+            onButtonPress("HOME");
+        }
+        
         if(contactOpen){
             if(mx>1145 && mx<1300 && my>590 && my<630){
                 window.open("https://github.com/caitlynj10", "_blank", "noopener,noreferrer");            

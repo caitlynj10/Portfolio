@@ -279,6 +279,10 @@ export default function sketch(onButtonPress, onLoaded){
             contactOpen = !contactOpen;
         }
 
+        if(mx > 1295 && mx < 1305 && my > 775 && my < 785){
+            onButtonPress("HOME");
+        }
+
         mousePressedSpongeBob();
 
         if(contactOpen){

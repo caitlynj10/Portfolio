@@ -699,6 +699,8 @@ export default function sketch(onButtonPress, onLoaded){
         if(mx > 1295 && mx < 1305 && my > 755 && my < 765){
             contactOpen = !contactOpen;
         }
+
+        
         
         if(contactOpen){
             if(mx>1145 && mx<1300 && my>590 && my<630){

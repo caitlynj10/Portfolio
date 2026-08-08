@@ -58,6 +58,9 @@ export default function App() {
           if(button === "LEARN_MORE"){
             handleNavigate("/about");
           }
+          if(button === "HOME"){
+            handleNavigate("/explore");
+          }
           
         }}
         />}/>
@@ -82,6 +85,10 @@ export default function App() {
             handleNavigate("/");
           }
 
+          if(button === "HOME"){
+            handleNavigate("/explore");
+          }
+
         }}
         />}/>
         <Route path="/sudoku" element={<Sudoku 
@@ -90,6 +97,9 @@ export default function App() {
           if(button === "POWER_OFF"){
             handleNavigate("/");
           }
+          if(button === "HOME"){
+            handleNavigate("/explore");
+          }
         }}
         />} />
         <Route path="/spongebob" element={<SpongeBob
@@ -97,6 +107,9 @@ export default function App() {
         onButtonPress={(button)=>{
           if(button === "POWER_OFF"){
             handleNavigate("/");
+          }
+          if(button === "HOME"){
+            handleNavigate("/explore");
           }
         }}
         />}/>
@@ -114,6 +127,7 @@ export default function App() {
           if(button === "SPONGEBOB_GAME"){
             handleNavigate("/spongebob");
           }
+
         }}
         />}/>
       </Routes>
