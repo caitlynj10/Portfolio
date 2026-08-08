@@ -65,6 +65,14 @@ export default function App() {
           if(button === "ABOUT"){
             handleNavigate("/about");
           }
+
+          if(button === "SUDOKU"){
+            handleNavigate("/sudoku");
+          }
+
+          if(button === "SPONGEBOB_GAME"){
+            handleNavigate("/spongebob");
+          }
           
         }}
         />}/>
@@ -92,6 +100,11 @@ export default function App() {
           if(button === "HOME"){
             handleNavigate("/explore");
           }
+          if(button === "ABOUT"){
+            handleNavigate("/about");
+          }
+
+          
 
         }}
         />}/>
@@ -104,6 +117,17 @@ export default function App() {
           if(button === "HOME"){
             handleNavigate("/explore");
           }
+          if(button === "ABOUT"){
+            handleNavigate("/about");
+          }
+
+          if(button === "SUDOKU"){
+            handleNavigate("/sudoku");
+          }
+
+          if(button === "SPONGEBOB_GAME"){
+            handleNavigate("/spongebob");
+          }
         }}
         />} />
         <Route path="/spongebob" element={<SpongeBob
@@ -114,6 +138,17 @@ export default function App() {
           }
           if(button === "HOME"){
             handleNavigate("/explore");
+          }
+          if(button === "ABOUT"){
+            handleNavigate("/about");
+          }
+
+          if(button === "SUDOKU"){
+            handleNavigate("/sudoku");
+          }
+
+          if(button === "SPONGEBOB_GAME"){
+            handleNavigate("/spongebob");
           }
         }}
         />}/>
@@ -130,6 +165,14 @@ export default function App() {
 
           if(button === "SPONGEBOB_GAME"){
             handleNavigate("/spongebob");
+          }
+
+          if(button === "ABOUT"){
+            handleNavigate("/about");
+          }
+
+          if(button === "HOME"){
+            handleNavigate("/explore");
           }
 
         }}

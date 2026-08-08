@@ -369,6 +369,23 @@ export default function sketch(onButtonPress, onLoaded){
         if(mx>600 && mx< 900 && my>485 && my<515){
             onButtonPress("ABOUT");
         }
+
+
+        if(mx>1410 && mx<1440 && my>260 && my<290){ //X
+            onButtonPress("ABOUT");
+        }
+
+        if(mx>1435 && mx<1465 && my>285 && my<315){ //A
+            onButtonPress("HOME");
+        }
+
+        if(mx>1385 && mx<1415 && my>285 && my<315){ //Y
+            onButtonPress("SPONGEBOB_GAME");
+        }
+
+        if(mx>1410 && mx<1440 && my>310 && my<340){ //B
+            onButtonPress("SUDOKU");
+        }
         
         if(contactOpen){
             if(mx>1145 && mx<1300 && my>590 && my<630){
