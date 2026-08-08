@@ -20,7 +20,6 @@ export default function sketch(onButtonPress, onLoaded){
         try{
             pressStart  = await p.loadFont('/fonts/PressStart2P.ttf');
             arial = await p.loadFont('/fonts/ARIAL.TTF');
-            pressStart  = await p.loadFont('/fonts/PressStart2P.ttf');
             gitIM = await p.loadImage("/icons/Github.png");
             linkedIM = await p.loadImage("/icons/Linkedin.png");
             emailIM = await p.loadImage("/icons/Email.png");
@@ -70,58 +69,45 @@ export default function sketch(onButtonPress, onLoaded){
 
     p.keyPressed = () => {
         console.log('key pressed', p.key);
-        if(p.keyCode === 40 && selectedOption == 0){ //down
-            selectedOption = 1;
-        }
-
-        if(p.keyCode === 38 && selectedOption == 1 && inMenu == false){//up
-            selectedOption = 0;
-        }
-
-        if (p.keyCode === 13 && selectedOption == 1 && inMenu == false) {//enter
-            inMenu = true;
-            gameOption = 0;
-            activeMenu = 0;
-        } 
-        if(p.keyCode === 38 && selectedOption == 1 && inMenu == true && gameOption == 0){
-            inMenu = false;
-            gameOption = 0;
-            activeMenu = 0;
-        }
-
-        if(p.keyCode === 8 && selectedOption == 1 && inMenu == true && gameOption == 0){
-            inMenu = false;
-            gameOption = 0;
-            activeMenu = 0;
-        }
-
-        if(p.keyCode === 40 && selectedOption == 1 && inMenu == true && gameOption == 0){
-            gameOption = 1;
-            activeMenu = 1;
-        }
-
-        if(p.keyCode === 38 && selectedOption == 1 && inMenu == true && gameOption == 1){
-            gameOption = 0;
-            activeMenu = 1;
-        }
-
-        if(gameOption == 0 && activeMenu == 1){
-            if(p.keyCode === 13){
-                onButtonPress("SPONGEBOB_GAME");
+        if (p.keyCode === 40) {
+            if (selectedOption === 0) {
+                selectedOption = 1;
+            } else if (selectedOption === 1 && inMenu) {
+                gameOption = 1;
             }
         }
-
-        if(gameOption == 1 && activeMenu == 1){
-            if(p.keyCode === 13){
-                onButtonPress("SUDOKU");
+        else if (p.keyCode === 38) {
+            if (selectedOption === 1 && !inMenu) {
+                selectedOption = 0;
+            } else if (selectedOption === 1 && inMenu) {
+                if (gameOption === 1) {
+                    gameOption = 0;
+                } else if (gameOption === 0) {
+                    inMenu = false;
+                }
             }
         }
-
-        if(selectedOption == 0){
-            if(p.keyCode === 13){
+        else if (p.keyCode === 8) {
+            if (inMenu) {
+                inMenu = false;
+                gameOption = 0;
+            }
+        }
+        else if (p.keyCode === 13) {
+            if (selectedOption === 0) {
                 onButtonPress("ENTER_SITE");
+            } else if (selectedOption === 1 && !inMenu) {
+                inMenu = true;
+                gameOption = 0;
+            } else if (selectedOption === 1 && inMenu) {
+                if (gameOption === 0) {
+                    onButtonPress("SPONGEBOB_GAME");
+                } else if (gameOption === 1) {
+                    onButtonPress("SUDOKU");
+                }
             }
         }
+    
 
       
       
@@ -254,7 +240,7 @@ export default function sketch(onButtonPress, onLoaded){
         p.fill(255, 69, 201);
         p.stroke(0);
         p.strokeWeight(1);
-        if(p.frameCount % 80 < 40){
+        if(p.frameCount % 60 < 30){
             if(selectedOption == 0 && inMenu == false){
                 p.triangle(995, 440, 1015, 450, 995, 460);
             }

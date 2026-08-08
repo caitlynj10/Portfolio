@@ -61,6 +61,10 @@ export default function App() {
           if(button === "HOME"){
             handleNavigate("/explore");
           }
+
+          if(button === "ABOUT"){
+            handleNavigate("/about");
+          }
           
         }}
         />}/>

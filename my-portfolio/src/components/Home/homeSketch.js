@@ -135,6 +135,15 @@ export default function sketch(onButtonPress, onLoaded){
     }
 
     function drawText(){
+        let scaleX = p.width / 1500;
+        let scaleY = p.height / 800;
+        let scaleFactor = Math.min(scaleX, scaleY);
+
+        let offsetX = (p.width - 1500 * scaleFactor) / 2;
+        let offsetY = (p.height - 800 * scaleFactor) / 2;
+
+        let mx = (p.mouseX - offsetX) / scaleFactor;
+        let my = (p.mouseY - offsetY) / scaleFactor;
 
         p.noStroke();
         
@@ -149,6 +158,15 @@ export default function sketch(onButtonPress, onLoaded){
         p.fill(0,0,0);
         p.textSize(30);
         p.text("ENTER SITE", 750, 425);
+        if(mx>600 && mx< 900 && my>410 && my<440){
+            p.fill(207, 27, 189)
+            p.text("ENTER SITE", 750, 425);
+        }
+        p.fill(0);
+        if(mx>600 && mx< 900 && my>485 && my<515){
+            p.fill(207, 27, 189)
+            p.text("LEARN MORE", 750, 500);
+        }
         p.text("LEARN MORE", 750, 500);
 
         p.textFont(pressStart);
@@ -162,7 +180,7 @@ export default function sketch(onButtonPress, onLoaded){
         p.stroke(207, 27, 189);
         p.strokeWeight(4);
         p.fill(0);
-        if(p.frameCount % 80 < 40){
+        if(p.frameCount % 60 < 30){
             if(selectedOption === 0){
                 p.triangle(560,415,580,425,560,435);
             }
@@ -338,9 +356,18 @@ export default function sketch(onButtonPress, onLoaded){
         if(mx > 1295 && mx < 1305 && my > 755 && my < 765){
             contactOpen = !contactOpen;
         }
+        
 
         if(mx > 1295 && mx < 1305 && my > 775 && my < 785){
             onButtonPress("HOME");
+        }
+        
+        if(mx>600 && mx< 900 && my>410 && my<440){
+            onButtonPress("ENTER_SITE");
+        }
+
+        if(mx>600 && mx< 900 && my>485 && my<515){
+            onButtonPress("ABOUT");
         }
         
         if(contactOpen){
