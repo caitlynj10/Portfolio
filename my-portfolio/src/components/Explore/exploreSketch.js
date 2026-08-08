@@ -31,6 +31,7 @@ export default function sketch(onButtonPress, onLoaded){
     let google;
     let microsoft;
     let menuOption = 0; //0 = experience, 1 = games, 2 = projects, 3 = skills
+    let controlsOpen = false;
 
 
     p.setup = async () =>{
@@ -109,6 +110,9 @@ export default function sketch(onButtonPress, onLoaded){
         }
         if(contactOpen){
             drawContactInfo();
+        }
+        if(controlsOpen){
+            drawControlsMenu();
         }
        
 
@@ -223,6 +227,60 @@ export default function sketch(onButtonPress, onLoaded){
         p.text("Power",90,750);
 
         
+    }
+
+    function drawControlsMenu(){
+        
+        p.fill(0, 0, 0, 180);
+        p.noStroke();
+        p.rect(0, 0, 1500, 800);
+        
+
+        // Pop-up Card Container
+        p.fill(255, 255, 255);
+        p.stroke(74, 13, 52);
+        p.strokeWeight(5);
+        p.rect(450, 200, 600, 400, 30);
+
+        // Title
+        p.noStroke();
+        p.fill(130, 17, 66);
+        p.textAlign(p.LEFT, p.CENTER);
+        p.textFont(pressStart);
+        p.textSize(26);
+        p.text("HOW TO NAVIGATE", 550, 240);
+
+        // Divider Line
+        p.stroke(130, 17, 66);
+        p.strokeWeight(3);
+        p.line(452, 260, 1048, 260);
+
+        p.circle(575,320,40);
+        p.circle(575,380,40);
+        p.circle(575,440,40);
+        p.circle(575,500,40);
+        
+        p.textAlign(p.CENTER,p.CENTER);
+        p.fill(0);
+        p.textFont(arial);
+        p.textSize(20);
+        p.text("X", 575, 320);
+        p.text("A", 575,380);
+        p.text("Y", 575, 440);
+        p.text("B", 575, 500);
+
+        p.textAlign(p.LEFT,p.CENTER);
+        p.fill(0);
+        p.noStroke();
+        p.textFont(pressStart);
+        p.text("About", 610, 320);
+        p.text("Home", 610, 380);
+        p.text("Krabby Patty Catcher", 610, 440);
+        p.text("Sudoku", 610, 500);
+
+
+        
+
     }
 
     function drawContactInfo(){
@@ -696,6 +754,10 @@ export default function sketch(onButtonPress, onLoaded){
 
         if(mx > 1295 && mx < 1305 && my > 755 && my < 765){
             contactOpen = !contactOpen;
+        }
+        if(mx>1450 && mx<1480 && my>20 && my<50){
+            controlsOpen = !controlsOpen;
+
         }
 
         if(mx>1410 && mx<1440 && my>260 && my<290){ //X
