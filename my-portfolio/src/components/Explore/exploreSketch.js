@@ -11,8 +11,7 @@ export default function sketch(onButtonPress, onLoaded){
     let qmIM;
     let contactOpen = false;
     let garamond;
-    // PFont garamondBold;
-    // PFont garamondItalic;
+    let times;
     let SK;
     let SB;
     let java;
@@ -41,6 +40,7 @@ export default function sketch(onButtonPress, onLoaded){
             pressStart  = await p.loadFont('/fonts/PressStart2P.ttf');
             arial = await p.loadFont('/fonts/ARIAL.TTF');
             garamond = await p.loadFont('/fonts/Garamond.ttf');
+            times = await p.loadFont('/fonts/times.ttf');
             gitIM = await p.loadImage("/icons/Github.png");
             linkedIM = await p.loadImage("/icons/Linkedin.png");
             emailIM = await p.loadImage("/icons/Email.png");
@@ -344,49 +344,47 @@ export default function sketch(onButtonPress, onLoaded){
         p.strokeWeight(4);
         p.line(180,130,480,130);
         p.textAlign(p.LEFT, p.CENTER);
-        p.textFont(garamond);
+        p.textFont(times);
         p.textSize(15);
         p.noStroke();
-        //garamondBold = new PFont(new Font("Garamond", Font.BOLD, 15), true);
-        //garamondItalic = new PFont(new Font("Garamond", Font.ITALIC, 15), true);
-        //p.textFont(garamondBold);
+        p.textStyle(p.BOLD);
         p.text("Lead Software Engineer", 200,170);
-        //p.textFont(garamondItalic);
+        p.textStyle(p.ITALIC);
         p.text("Enjoyment Department", 200, 190);
-        //p.textFont(garamond);
+        p.textStyle(p.NORMAL);
         p.text("\u2022 Built the React + Vite frontend for a nightlife discovery web app, including an interactive Mapbox interface, real-time event/venue filtering, and curated verified event browsing", 210, 215);
         p.text("\u2022 Integrated Firebase (Auth + Firestore), Stripe subscriptions, and Resend email automation to deploy a mobile-first PWA on Vercel with personalized user features", 210, 240);
 
-        //p.textFont(garamondBold);
+        p.textStyle(p.BOLD);
         p.text("Volleyball Coach", 200,280);
-        //p.textFont(garamondItalic);
+        p.textStyle(p.ITALIC);
         p.text("Beaver Country Day School; Lionheart Volleyball Club", 200, 300);
-        p.textFont(garamond);
+        p.textStyle(p.NORMAL);
         p.text("\u2022 Coached and mentored beginner athletes, improving fundamental skills, teamwork, and confidence in competitive play", 210, 325);
         p.text("\u2022 Fostered an inclusive and supportive environment that encouraged collaboration and personal growth", 210, 350); 
 
-        //p.textFont(garamondBold);
+        p.textStyle(p.BOLD);
         p.text("Qualitative & Quantitative Insights Externship", 200,390);
-        //p.textFont(garamondItalic);
+        p.textStyle(p.ITALIC);
         p.text("Extern, Beats by Dre", 200, 410);
-        p.textFont(garamond);
+        p.textStyle(p.NORMAL);
         p.text("\u2022 Conducted qualitative and quantitative research to uncover customer insights related to trends, behaviors, and preferences for Beats audio devices", 210, 435);
         p.text("\u2022 Used various AI platforms to synthesize insights and present findings in a detailed visual presentation", 210, 460);
 
-       // p.textFont(garamondBold);
+        p.textStyle(p.BOLD);
         p.text("Computer Science Tutor", 200,500);
-        //p.textFont(garamondItalic);
+        p.textStyle(p.ITALIC);
         p.text("Brandeis University", 200, 520);
-        p.textFont(garamond);
+        p.textStyle(p.NORMAL);
         p.text("\u2022 Taught students introductory Python and Java concepts and problem-solving techniques with guided practice and coding exercises", 210, 545);
         p.text("\u2022 Contributed to the academic growth and development of new Computer Science majors by assisting with assignments and building student confidence in programming ", 210, 570);
 
             
-        //p.textFont(garamondBold);
+        p.textStyle(p.BOLD);
         p.text("Vice President of External Affairs, Executive Board ", 200,610);
-       // p.textFont(garamondItalic);
+        p.textStyle(p.ITALIC);
         p.text("Sigma Delta Tau, Delta Gamma Chapter", 200, 630);
-        p.textFont(garamond);
+        p.textStyle(p.NORMAL);
         p.text("\u2022 Led the planning and coordination of external events and partnerships for the chapter.", 210, 655);
         p.text("\u2022 Managed budgets and allocated funds to support organizational engagement and outreach initiatives.", 210, 680);
 
@@ -528,7 +526,7 @@ export default function sketch(onButtonPress, onLoaded){
 
         p.noStroke();
         p.textAlign(p.LEFT,p.CENTER);
-        p.textFont(garamond);
+        p.textFont(times);
         p.textSize(40);
         p.fill(0);
         p.text("Portfolio", 210,170);
