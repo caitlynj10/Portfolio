@@ -763,6 +763,31 @@ export default function sketch(onButtonPress, onLoaded){
             onButtonPress("SUDOKU");
         }
 
+        if(p.keyCode === 39){ //right
+            if(menuOption === 0){
+                menuOption = 1;
+            }
+            else if(menuOption === 1){
+                menuOption = 2;
+            }
+            else if(menuOption === 2){
+                menuOption = 3;
+            }
+        }
+
+        if(p.keyCode === 37){//left
+            if(menuOption === 1){
+                menuOption = 0;
+            }
+            else if(menuOption === 2){
+                menuOption = 1;
+            }
+            else if(menuOption === 3){
+                menuOption = 2;
+            }
+        }
+
+
     };
 
     p.mousePressed = () => {
@@ -783,6 +808,31 @@ export default function sketch(onButtonPress, onLoaded){
             controlsOpen = !controlsOpen;
 
         }
+
+        if(mx>85 && mx< 110 && my > 550 && my<575){ //right
+            if(menuOption === 0){
+                menuOption = 1;
+            }
+            else if(menuOption === 1){
+                menuOption = 2;
+            }
+            else if(menuOption === 2){
+                menuOption = 3;
+            }
+        }
+
+        if(mx>35 && mx< 60 && my > 550 && my<575){//left
+            if(menuOption === 1){
+                menuOption = 0;
+            }
+            else if(menuOption === 2){
+                menuOption = 1;
+            }
+            else if(menuOption === 3){
+                menuOption = 2;
+            }
+        }
+
 
         if(mx>1410 && mx<1440 && my>260 && my<290){ //X
             onButtonPress("ABOUT");
