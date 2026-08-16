@@ -185,7 +185,7 @@ export default function sketch(onButtonPress, onLoaded){
         p.fill(250, 125, 182);
         p.text("BASED IN:", 640, 220);
         p.fill(0);
-        p.text("??????", 800, 220);
+        p.text("New York City", 800, 220);
 
         p.textAlign(p.LEFT, p.CENTER);
         p.fill(250, 125, 182);
