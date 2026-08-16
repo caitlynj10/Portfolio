@@ -11,7 +11,6 @@ export default function sketch(onButtonPress, onLoaded){
     let contactOpen = false;
     let inMenu = false;
     let gameOption = 0;
-    let activeMenu = 0;
     let controlsOpen = false;
     //0 = enter site; 1 = learn more
 
@@ -532,16 +531,53 @@ export default function sketch(onButtonPress, onLoaded){
             inMenu = false;
             onButtonPress("ENTER_SITE");
         }
+
+
         if (mx>1025 && mx< 1225 && my>485 && my<515) {
+            selectedOption = 1;
+            inMenu = !inMenu;
+            gameOption = 0;
+        }
+
+        if( mx > 60 && mx < 85 && my> 575 && my<600 ){
+            if(!inMenu && selectedOption === 0){
                 selectedOption = 1;
+            }
+            else if(!inMenu && selectedOption === 1){
                 inMenu = !inMenu;
                 gameOption = 0;
+            }
+            else if(inMenu && gameOption === 0){
+                gameOption = 1;
+            }
+            
         }
+
+        if(mx > 60 && mx < 85 && my> 525 && my< 550){
+            if(!inMenu && selectedOption === 1){
+                selectedOption = 0;
+            }
+            else if(inMenu && gameOption === 1){
+                gameOption = 0;
+            }
+            else if(gameOption === 0){
+                inMenu = !inMenu;
+                selectedOption = 1;
+            }
+        }
+       
+
+        //     if(selectedOption ===  1 && mx > 60 && mx < 85 && my> 525 && my< 550){
+        //     selectedOption = 0;
+        // }
+
+        // if(selectedOption === 0 && mx > 60 && mx < 85 && my> 575 && my<600 ){
+        //     selectedOption = 1;
+        // }
 
         if(inMenu){
             if(mx > 1035 && mx<1235 && my > 525 && my<535){
                 gameOption = 0;
-                activeMenu = 1;
                 onButtonPress("SPONGEBOB_GAME");
             }
 
@@ -549,11 +585,10 @@ export default function sketch(onButtonPress, onLoaded){
         if(inMenu){
             if(mx > 1035 && mx<1100 && my > 545 && my<555){
                 gameOption = 1;
-                activeMenu = 1;
                 onButtonPress("SUDOKU");
             }
 
-        }
+        }        
 
         if(mx>1410 && mx<1440 && my>260 && my<290){ //X
             onButtonPress("ABOUT");
