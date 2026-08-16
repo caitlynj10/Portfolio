@@ -1,5 +1,5 @@
 import './App.css'
-import { useNavigate, Routes, Route } from "react-router-dom";
+import { useNavigate, useLocation, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
@@ -9,6 +9,7 @@ import Explore from "./components/Explore/Explore";
 
 export default function App() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [isLoading, setIsLoading] = useState(false);
   const [isPoweringOff, setIsPoweringOff] = useState(false);
 
@@ -46,7 +47,7 @@ export default function App() {
         </div>
       )}
     
-      <Routes>
+      <Routes key={location.key}>
         <Route path="/" element={<Home 
         onLoaded={handlePageReady}
         onButtonPress={(button)=>{

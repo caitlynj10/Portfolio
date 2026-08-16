@@ -340,11 +340,13 @@ export default function sketch(onButtonPress, onLoaded){
             drawContactInfo();
         }
 
+       
+        
+        drawSudoku();
+
         if(controlsOpen){
             drawControlsMenu();
         }
-        
-        drawSudoku();
 
        
 
