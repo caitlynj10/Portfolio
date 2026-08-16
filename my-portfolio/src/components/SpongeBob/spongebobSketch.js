@@ -330,6 +330,24 @@ export default function sketch(onButtonPress, onLoaded){
         let offsetY = (p.height - 800 * scaleFactor) / 2;
         return (p.mouseY - offsetY) / scaleFactor;
     }
+    p.keyPressed = () =>{
+        if (p.keyCode === 88){ //X
+            onButtonPress("ABOUT");
+        }
+
+        if (p.keyCode === 65){ //A
+            onButtonPress("HOME");
+        }
+
+        if (p.keyCode === 89){ //Y
+            onButtonPress("SPONGEBOB_GAME");
+        }
+
+        if (p.keyCode === 66){ //B
+            onButtonPress("SUDOKU");
+        }
+
+    };
     
     p.mousePressed = () => {
         let mx = getScaledMouseX();

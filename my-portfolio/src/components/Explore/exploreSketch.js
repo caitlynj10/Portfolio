@@ -449,7 +449,7 @@ export default function sketch(onButtonPress, onLoaded){
             
         p.textAlign(p.RIGHT, p.CENTER);
         p.textFont(garamond);
-        p.text("May 2026-Present", 1300,170);
+        p.text("May 2026-August 2026", 1300,170);
         p.text("August 2023-August 2026", 1300, 280);
         p.text("February 2026-May 2026", 1300,390);
         p.text("September 2025-May 2026", 1300, 500);
@@ -740,6 +740,25 @@ export default function sketch(onButtonPress, onLoaded){
         p.image(google, 1030, 588, 250, 126);
 
     }
+
+    p.keyPressed = () =>{
+        if (p.keyCode === 88){ //X
+            onButtonPress("ABOUT");
+        }
+
+        if (p.keyCode === 65){ //A
+            onButtonPress("HOME");
+        }
+
+        if (p.keyCode === 89){ //Y
+            onButtonPress("SPONGEBOB_GAME");
+        }
+
+        if (p.keyCode === 66){ //B
+            onButtonPress("SUDOKU");
+        }
+
+    };
 
     p.mousePressed = () => {
         let scaleX = p.width / 1500;

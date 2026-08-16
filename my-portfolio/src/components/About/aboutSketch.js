@@ -72,7 +72,22 @@ export default function sketch(onButtonPress, onLoaded){
 
 
     p.keyPressed = () => {
-        console.log('key pressed', p.key);
+        if (p.keyCode === 88){ //X
+            onButtonPress("ABOUT");
+        }
+
+        if (p.keyCode === 65){ //A
+            onButtonPress("HOME");
+        }
+
+        if (p.keyCode === 89){ //Y
+            onButtonPress("SPONGEBOB_GAME");
+        }
+
+        if (p.keyCode === 66){ //B
+            onButtonPress("SUDOKU");
+        }
+        
         if (p.keyCode === 40) {
             if (selectedOption === 0) {
                 selectedOption = 1;
