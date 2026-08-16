@@ -412,7 +412,10 @@ export default function sketch(onButtonPress, onLoaded){
         p.text("Krabby Patty Catcher", 610, 440);
         p.text("Sudoku", 610, 500);
 
-
+        p.stroke(130, 17, 66);
+        p.strokeWeight(6);
+        p.line(1450,20,1480,50);
+        p.line(1480, 20, 1450, 50)
         
 
     }
@@ -464,9 +467,7 @@ export default function sketch(onButtonPress, onLoaded){
 
         if(mx>1450 && mx<1480 && my>20 && my<50){
             controlsOpen = !controlsOpen;
-
         }
-        
         
         if(contactOpen){
             if(mx>1145 && mx<1300 && my>590 && my<630){

@@ -278,6 +278,11 @@ export default function sketch(onButtonPress, onLoaded){
         p.text("Krabby Patty Catcher", 610, 440);
         p.text("Sudoku", 610, 500);
 
+        p.stroke(130, 17, 66);
+        p.strokeWeight(6);
+        p.line(1450,20,1480,50);
+        p.line(1480, 20, 1450, 50)
+
 
         
 
